@@ -28,9 +28,6 @@ class VirtualMachine {
   getOpcode() {
     const opcode =
       this.r.ir < 0 ? Math.ceil(this.r.ir / 100) : Math.floor(this.r.ir / 100);
-    if (opcode < -99 || opcode > 99) {
-      throw new Error("Invalid opcode, opcode: " + opcode);
-    }
     return opcode;
   }
 
@@ -45,8 +42,11 @@ class VirtualMachine {
 
     //check if the opcode and operand are valid if not then we have an invalid instruction and odds are are infinitely looping
     if (Number.isNaN(opcode) || Number.isNaN(operand)) {
-      this.r.isEnd = true;
       throw new Error("Invalid instruction");
+    }
+
+    if (opcode < -99 || opcode > 99) {
+      throw new Error("Invalid opcode");
     }
 
     //DEBUG for opcode and operand
