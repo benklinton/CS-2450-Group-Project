@@ -3,6 +3,11 @@ class Memory {
     this.words = Array.from({ length: 100 }, () => 0);
   }
 
+  /**
+   * Loads a program into memory from a file
+   * @param {the path to a file to be loaded into memory} fileName
+   * @returns
+   */
   loadProgram(fileName) {
     const fs = require("fs");
     const path = require("path");
@@ -30,32 +35,28 @@ class Memory {
   }
 
   /**
-   * Loads a line (or word) from the memory array at the specified index
-   * @param {The index at which the word or line is loaded from, [00-99]} index
+   * Loads a location (or word) from the memory array at the specified location
+   * @param {The location at which the word or line is loaded from, [00-99]} loc
    * @returns
    */
-  getLine(index = 0) {
-    return this.words[index];
-  }
-  /**
-   * Get the entire memory array
-   * @returns The entire memory array
-   */
-  getAllLines() {
-    return this.words;
+  getLoc(loc = 0) {
+    if (loc < 0 || loc > 99) {
+      throw new Error("Index out of bounds");
+    }
+    return this.words[loc];
   }
 
   /**
-   * Overwrites a line in memory with a new value
-   * @param {The index at which the line in memory will be overwritten} index
+   * Overwrites a location in memory with a new value
+   * @param {The location at which the line in memory will be overwritten} loc
    * @param {The value with which the line will be written} value
    */
-  setLine(index = 0, value = 0) {
-    this.words[index] = value;
+  setLoc(loc = 0, value = 0) {
+    this.words[loc] = value;
   }
 
   /**
-   * Clears the whole memory array
+   * Clears the whole memory
    */
   clear() {
     this.words = Array.from({ length: 100 }, () => 0);
