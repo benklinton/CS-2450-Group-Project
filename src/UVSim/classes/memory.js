@@ -41,7 +41,7 @@ class Memory {
    */
   getLoc(loc = 0) {
     if (loc < 0 || loc > 99) {
-      throw new Error("Index out of bounds");
+      throw new Error("Accessing location out of bounds, loc: " + loc);
     }
     return this.words[loc];
   }
@@ -52,6 +52,12 @@ class Memory {
    * @param {The value with which the line will be written} value
    */
   setLoc(loc = 0, value = 0) {
+    if (loc < 0 || loc > 99) {
+      throw new Error("Setting location out of bounds, loc: " + loc);
+    }
+    if (value > 9999 || value < -9999) {
+      throw new Error("Setting value out of bounds, value: " + value);
+    }
     this.words[loc] = value;
   }
 
