@@ -4,8 +4,16 @@ The project creates a virtual machine that reads instruction files specified to 
 
 # Running Application Locally
 
-specify route to program file to be executed
-(I have put example program files in the ./programs folder)
+1. Install nvm for node version mananger or install npm and node
+2. use nvm to install node version v20.14.0 (You could run with a different version but it is not recommended)
+3. clone repository onto computer
+4. move into repository and install dependencies
+
+```
+npm install
+```
+
+5. start project by specifing route to program file to be executed (I have put example program files in the ./programs folder)
 
 ```
 node index.js <path to program>
