@@ -6,7 +6,7 @@ class VirtualMachine {
     this.pc = 0; //program counter - points to the next instruction to be executed
     this.ir = 0; //instruction register - holds the current instruction
     this.mar = 0; //memory address register - holds the memory address
-    this.acc = 0; //accumulator (memory buffer register) - holds the data to be written to memory
+    this.acc = 0; //accumulator (memory buffer register) - holds the data typically used in operations, such as read, write, store, or arithmetic operations
     //memory
     this.memory = new Memory();
 
@@ -41,7 +41,7 @@ class VirtualMachine {
       return false;
     }
 
-    //debug for opcode and operand
+    //DEBUG for opcode and operand
     // console.log(opcode, operand);
 
     switch (opcode) {

@@ -7,7 +7,6 @@ class Memory {
     const fs = require("fs");
     const path = require("path");
     const absolutePath = path.resolve(process.cwd(), fileName);
-    // const filePath = path.join(__dirname, fileName);
 
     try {
       // Read file synchronously
@@ -51,7 +50,7 @@ class Memory {
    * @param {The index at which the line in memory will be overwritten} index
    * @param {The value with which the line will be written} value
    */
-  setWord(index = 0, value = 0) {
+  setLine(index = 0, value = 0) {
     this.words[index] = value;
   }
 
