@@ -45,28 +45,34 @@ class VirtualMachine {
     // console.log(opcode, operand);
 
     switch (opcode) {
-      case 1:
+      case 10:
         break;
-      case 2:
+      case 11:
         break;
-      case 3:
+      case 20:
         break;
-      case 4:
+      case 21:
         break;
-      case 5:
+      case 30:
         break;
-      case 6:
+      case 31:
         break;
-      case 7:
+      case 32:
         break;
-      case 8:
+      case 33:
         break;
-      case 9:
+      case 40:
         break;
-      case 0:
+      case 41:
+        break;
+      case 41:
+        break;
+      case 42:
+        break;
+      case 43:
         break;
       case -999:
-        //this is the halt
+        //This appears to be at the end of every program... not sure if it's a sort of stop?
         return false;
       default:
         break;
