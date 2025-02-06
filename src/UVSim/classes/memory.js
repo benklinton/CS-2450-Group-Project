@@ -6,6 +6,7 @@ class Memory {
   /**
    * Loads a program into memory from a file
    * @param {string} fileName
+   * the path to a file to be loaded into memory
    */
   loadProgram(fileName) {
     const fs = require("fs");
@@ -35,8 +36,9 @@ class Memory {
 
   /**
    * Loads a location (or word) from the memory array at the specified location
-   * @param {number} loc
-   * @returns {void}
+   * @param {int} loc
+   * The location at which the word or line is loaded from, [00-99]
+   * @returns {string}
    */
   getLoc(loc = 0) {
     if (loc < 0 || loc > 99) {
@@ -47,8 +49,10 @@ class Memory {
 
   /**
    * Overwrites a location in memory with a new value
-   * @param {The location at which the line in memory will be overwritten} loc
-   * @param {The value with which the line will be written} value
+   * @param {int} loc
+   * The location at which the line in memory will be overwritten
+   * @param {int} value
+   * The value with which the line will be written
    */
   setLoc(loc = 0, value = 0) {
     if (loc < 0 || loc > 99) {

@@ -17,3 +17,12 @@ Read Word Into Memory 2
 +4300
 90.5
 10 90.5,READ,Invalid Opcode
+
+Load/Store Value Into Acc 1
+10
++1010
++2010
++2111
++4300
+11
+10 10,READ,20 10,LOAD,21 11,STORE,43 0,HALT,10

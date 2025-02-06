@@ -75,6 +75,12 @@ vm.memory.setLoc(23,1020)
 
 # Testing
 
+Tests are done by running
+```
+node runtests.js
+```
+within the programs directory.
+
 Tests are created in UVSimTests.txt. They are seperated by two newline characters.
 A test passes if it matches the output of the program after being fed the test.
 Each test is based on the following format:
