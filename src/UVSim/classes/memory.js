@@ -5,8 +5,7 @@ class Memory {
 
   /**
    * Loads a program into memory from a file
-   * @param {the path to a file to be loaded into memory} fileName
-   * @returns
+   * @param {string} fileName
    */
   loadProgram(fileName) {
     const fs = require("fs");
@@ -36,8 +35,8 @@ class Memory {
 
   /**
    * Loads a location (or word) from the memory array at the specified location
-   * @param {The location at which the word or line is loaded from, [00-99]} loc
-   * @returns
+   * @param {number} loc
+   * @returns {void}
    */
   getLoc(loc = 0) {
     if (loc < 0 || loc > 99) {

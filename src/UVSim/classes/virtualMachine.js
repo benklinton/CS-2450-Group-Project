@@ -1,16 +1,20 @@
 const { functions } = require("../functions/functions");
 const { Memory } = require("./memory");
 const { Register } = require("./register");
+//This must be installed within the project folder manually
+//via "npm -i readline-sync"
+const readLineSync = require('readline-sync')
 
 class VirtualMachine {
-  constructor(progam) {
+  constructor(progam="") {
     this.r = new Register();
     this.memory = new Memory();
+    this.reader = readLineSync;
 
     //load the program into memory
-    this.memory.loadProgram(progam);
-    //run the program
-    this.run();
+    if (progam != "") {
+      this.memory.loadProgram(progam);
+    }
   }
 
   run() {

@@ -4,16 +4,16 @@ The project creates a virtual machine that reads instruction files specified to 
 
 # Running Application Locally
 
-1. Install nvm for node version mananger or install npm and node
-2. use nvm to install node version v20.14.0 (You could run with a different version but it is not recommended)
-3. clone repository onto computer
-4. move into repository and install dependencies
+1. Install nvm for node version mananger or install npm and node.
+2. Use nvm to install node version v20.14.0. (You could run with a different version but it is not recommended)
+3. Clone repository onto computer.
+4. Move into repository and install dependencies.
 
 ```
 npm install
 ```
 
-5. start project by specifing route to program file to be executed (I have put example program files in the ./programs folder)
+5. Start project by specifing route to program file to be executed. (I have put example program files in the ./programs folder)
 
 ```
 node index.js <path to program>
@@ -25,17 +25,27 @@ node index.js <path to program>
     node index.js ./programs/Test1.txt
 ```
 
-# building
+# Building
 
-run
+To convert index.js to an executable, run:
 
 ```
 npm run build
 ```
 
-The output will appear in a new folder called dist it should output each program for mac linux and windows
+The output will appear in a new folder called dist it should output each program for Mac:
 
-# notes
+**app-macos**
+
+Linux:
+
+**app-linux**
+
+Windows:
+
+**app-win.exe**
+
+# Notes
 
 maybe we could consider using electron if needing to move forward for app gui
 
@@ -52,11 +62,56 @@ vm.r.acc
 //sets the accumulator register value
 vm.r.acc = 0;
 
-//get the pointer counter
+//get the pointer counter 
 vm.r.pc
+//sets the pointer counter
+vm.r.pc = 0;
 
 //get a location in memory
 const temp = vm.memory.getLoc(23)
 //set a location in memory
 vm.memory.setLoc(23,1020)
+```
+
+# Testing
+
+Tests are created in UVSimTests.txt. They are seperated by two newline characters.
+A test passes if it matches the output of the program after being fed the test.
+Each test is based on the following format:
+Title - 1 line - Name of the test
+```
+Example: 
+My Test 1
+```
+Arguments - 1 line - A list of arguments for the READ operator.
+Each is seperated by a space. If you dont want one, put -1.
+```
+Example: 
+15 7 2
+```
+There are two ways to write the "Program" part of a test.
+Program Option 1 - 1 line - Path to file with program. CD is the main Group Project folder.
+```
+Example: 
+../programs/Test1.txt
+```
+Program Option 2 - 1+ line - A list of lines of code to run. These are seperated by new line characters.
+```
+Example: 
++1000
++4300
+```
+Memory Location - 1 line - A location in memory to load from. This will be added to the programs output
+If you dont want to load from memory, put -1.
+```
+Example: 
+45
+```
+Expected Result - 1 line - The expected result of the program. Each console log/error is seperated by comma.
+Generally they follow this format:
+OPCODE OPERAND,FUNCTIONNAME,OPCODE2 OPERAND2,FUNCTIONNAME2...Memory Read
+However errors may be included as an output.
+```
+Example: 
+10 7,READ,43 0,HALT,15
 ```

@@ -1,0 +1,19 @@
+Read File Into Memory 1
+15
+../programs/Test1.txt
+7
+10 7,READ,43 0,HALT,15
+
+Read Word Into Memory 1
+5
++1010
++4300
+10
+10 10,READ,43 0,HALT,5
+
+Read Word Into Memory 2
+7
++1090.5
++4300
+90.5
+10 90.5,READ,Invalid Opcode
