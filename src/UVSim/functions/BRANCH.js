@@ -5,6 +5,7 @@
  */
 const BRANCH = (vm, v) => {
   console.log("BRANCH");
+  vm.r.pc = v;
 };
 
 module.exports = { BRANCH };
