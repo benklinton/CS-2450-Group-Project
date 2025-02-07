@@ -4,8 +4,9 @@
  * @param {value - the value passed by the instruction otherwise known as operand} v
  */
 const HALT = (vm, v) => {
-  console.log("HALT");
+  // Halt the program.
   vm.r.isEnd = true;
+  console.log("HALT");
 };
 
 module.exports = { HALT };
