@@ -54,6 +54,20 @@ Load/Store Value Into Acc 4
 -1
 10 53,READ,Out of Bounds Value: 10101
 
+Execute Commands 1
+5
++1020
++2020
++3008
++3309
++2121
++1121
++4300
++0005
++0010
+20
+10 20,READ,20 20,LOAD,30 08,ADD,33 09,MULTIPLY,21 21,STORE,11 21,WRITE,43 0,HALT,20
+
 Execute Commands 2
 5
 +1110
@@ -73,3 +87,18 @@ Opcodes 2
 +4400
 -1
 44 0,Out Of Bounds: 100
+
+Write to Console 1
+735
++1045
++1145
++4300
+45
+10 45,READ,11 45,WRITE,43 0,HALT,735
+
+Write to Console 2
+-1
++1145
++4300
+45
+11 45,WRITE,43,0,HALT, 
