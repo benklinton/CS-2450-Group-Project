@@ -1,6 +1,6 @@
 Read File Into Memory 1
 15
-../programs/Test1.txt
+Test1.txt
 7
 10 7,READ,43 0,HALT,15
 
@@ -26,3 +26,50 @@ Load/Store Value Into Acc 1
 +4300
 11
 10 10,READ,20 10,LOAD,21 11,STORE,43 0,HALT,10
+
+Load/Store Value Into Acc 2
+21
++1021
++2021
++2132
++4300
+32
+10 21,READ,20 21,LOAD,21 32,STORE,43 0,HALT,21
+
+Load/Store Value Into Acc 3
+50
++1050
++2050
++21101
++4300
+101
+10 50,READ,20 50,LOAD,Invalid opcode
+
+Load/Store Value Into Acc 4
+10101
++1053
++2053
++2185
++4300
+-1
+10 53,READ,Out of Bounds Value: 10101
+
+Execute Commands 2
+5
++1110
++1010
++4300
+-1
+11 10,WRITE,0,10 10,READ,43 0,HALT
+
+Opcodes 1
+-1
+404 Operator Not Found
+-1
+Error: File DNE: 404 Operator Not Found
+
+Opcodes 2
+-1
++4400
+-1
+44 0,Out Of Bounds: 100

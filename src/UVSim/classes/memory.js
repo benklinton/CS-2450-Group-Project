@@ -12,12 +12,14 @@ class Memory {
     const fs = require("fs");
     const path = require("path");
     const absolutePath = path.resolve(process.cwd(), fileName);
-
-    try {
       // Read file synchronously
-      const data = fs.readFileSync(absolutePath, "utf8");
+      let data;
+      try {      
+        data = fs.readFileSync(absolutePath, "utf8");
+      } catch {
+        throw Error(`File DNE: ${fileName}`)
+      }
       const lines = data.split("\n");
-
       // Load program into memory
       lines.forEach((line, index) => {
         if (index < 100) {
@@ -28,10 +30,6 @@ class Memory {
           }
         }
       });
-    } catch (err) {
-      console.error(err);
-      return;
-    }
   }
 
   /**
@@ -42,7 +40,7 @@ class Memory {
    */
   getLoc(loc = 0) {
     if (loc < 0 || loc > 99) {
-      throw new Error("Accessing location out of bounds, loc: " + loc);
+      throw new Error("Out Of Bounds: " + loc);
     }
     return this.words[loc];
   }
@@ -56,10 +54,10 @@ class Memory {
    */
   setLoc(loc = 0, value = 0) {
     if (loc < 0 || loc > 99) {
-      throw new Error("Setting location out of bounds, loc: " + loc);
+      throw new Error("Out of Bounds Location: " + loc);
     }
     if (value > 9999 || value < -9999) {
-      throw new Error("Setting value out of bounds, value: " + value);
+      throw new Error("Out of Bounds Value: " + value);
     }
     this.words[loc] = value;
   }

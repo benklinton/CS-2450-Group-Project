@@ -96,10 +96,10 @@ Example:
 15 7 2
 ```
 There are two ways to write the "Program" part of a test.
-Program Option 1 - 1 line - Path to file with program. CD is the main Group Project folder.
+Program Option 1 - 1 line - Path to file with program. CD is the programs folder.
 ```
 Example: 
-../programs/Test1.txt
+Test1.txt
 ```
 Program Option 2 - 1+ line - A list of lines of code to run. These are seperated by new line characters.
 ```

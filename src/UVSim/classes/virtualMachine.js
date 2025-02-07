@@ -52,7 +52,9 @@ class VirtualMachine {
     }
 
     //DEBUG for opcode and operand
-    console.log(opcode, operand);
+    if (opcode != 0 || operand != 0) {
+      console.log(opcode, operand);
+    }
     return functions?.[opcode]?.(this, operand);
   }
 }
