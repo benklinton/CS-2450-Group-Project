@@ -4,8 +4,9 @@
  * @param {value - the value passed by the instruction otherwise known as operand} v
  */
 const BRANCH = (vm, v) => {
-  console.log("BRANCH");
+  // Branch to a specific location in memory.
   vm.r.pc = v;
+  console.log("BRANCH");
 };
 
 module.exports = { BRANCH };

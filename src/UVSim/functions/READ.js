@@ -4,8 +4,7 @@
  * @param {value - the value passed by the instruction otherwise known as operand} v
  */
 const READ = async (vm, v) => {
-  console.log("READ");
-
+  // Read a word from the console into a specific location in memory.
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
 
@@ -20,6 +19,7 @@ const READ = async (vm, v) => {
       vm.memory.setLoc(v, word);
     }
   });
+  console.log("READ");
 };
 
 module.exports = { READ };
