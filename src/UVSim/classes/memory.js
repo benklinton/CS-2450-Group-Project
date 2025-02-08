@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 class Memory {
   constructor() {
     this.words = Array.from({ length: 100 }, () => 0);
@@ -9,29 +12,24 @@ class Memory {
    * @returns
    */
   loadProgram(fileName) {
-    const fs = require("fs");
-    const path = require("path");
     const absolutePath = path.resolve(process.cwd(), fileName);
 
-    // Read file synchronously
-    let data;
-    try {
-      data = fs.readFileSync(absolutePath, "utf8");
-    } catch {
-      throw Error("File not found: " + fileName);
+    const data = fs.readFileSync(absolutePath, "utf8");
+    const lines = data.split("\n");
+    // check if the file is empty 
+    if (lines[0] === "") {
+      throw new Error("Empty file");
+    }
+    // check if the file has more than 100 lines
+    if (lines.length > 100) {
+      throw new Error("Program is too large");
+    }
+    // load the program into memory
+    for (let i = 0; i < lines.length; i++) {
+      this.words[i] = parseInt(lines[i]);
     }
 
-    const lines = data.split("\n");
-    // Load program into memory
-    lines.forEach((line, index) => {
-      if (index < 100) {
-        //uses parseInt to convert the string to an integer could use strings instead and change the processor
-        const value = parseInt(line.trim());
-        if (!isNaN(value)) {
-          this.words[index] = value;
-        }
-      }
-    });
+
   }
 
   /**
