@@ -5,8 +5,8 @@
  */
 const LOAD = (vm, v) => {
   // Load a word from a specific location in memory into the accumulator.
-  vm.r.acc = vm.memory.getLoc(v);
-  console.log("LOAD");
+ const value = vm.memory.getLoc(v);
+  vm.r.acc = value;
 };
 
 module.exports = { LOAD };

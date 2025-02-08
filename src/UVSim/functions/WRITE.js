@@ -5,8 +5,8 @@
  */
 const WRITE = (vm, v) => {
   // Write a word from a specific location in memory to the console.
-  console.log(vm.memory.getLoc(v));
-  console.log("WRITE");
+  const value = vm.memory.getLoc(v);
+  console.log(value);
 };
 
 module.exports = { WRITE };

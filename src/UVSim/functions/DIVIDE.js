@@ -5,8 +5,12 @@
  */
 const DIVIDE = (vm, v) => {
   // Divide the word in the accumulator by a word from a specific location in memory (leave the result in the accumulator).
-  vm.r.acc /= vm.memory.getLoc(v);
-  console.log("DIVIDE");
+  const value = vm.memory.getLoc(v);
+  if (value === 0) {
+    throw new Error("Cannot divide by zero");
+  } else {
+    vm.r.acc /= value;
+  }
 };
 
 module.exports = { DIVIDE };
