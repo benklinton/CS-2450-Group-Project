@@ -3,22 +3,18 @@
  * @param {current virtual machine - has all the data like registers memory and such} vm
  * @param {value - the value passed by the instruction otherwise known as operand} v
  */
-const READ = async (vm, v) => {
+const READ = (vm, v) => {
   // Read a word from the console into a specific location in memory.
-  process.stdin.resume();
-  process.stdin.setEncoding('utf8');
 
-  process.stdin.on('data', data => {
-    // As in LC-3, no prompt is given for a keyboard input instruction
-    // You just gotta know
-    const word = parseFloat(data.trim());
-
-    // Verify the input is a valid word
-    if (Number.isInteger(word) && word >= -9999 && word <= 9999) {
-      // Write word to memory
-      vm.memory.setLoc(v, word);
-    }
-  });
+  // Get number from user
+  const input = vm.reader.question("Enter a number: ");
+  // check if the input is a number
+  if (input === "" || input === null || isNaN(input) || input % 1 !== 0) {
+    throw new Error("Invalid input");
+  } else {
+    // set the location in memory to the input
+    vm.memory.setLoc(v, parseInt(input));
+  }
   console.log("READ");
 };
 
