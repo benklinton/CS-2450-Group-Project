@@ -13,25 +13,25 @@ class Memory {
     const path = require("path");
     const absolutePath = path.resolve(process.cwd(), fileName);
 
+    // Read file synchronously
+    let data;
     try {
-      // Read file synchronously
-      const data = fs.readFileSync(absolutePath, "utf8");
-      const lines = data.split("\n");
-
-      // Load program into memory
-      lines.forEach((line, index) => {
-        if (index < 100) {
-          //uses parseInt to convert the string to an integer could use strings instead and change the processor
-          const value = parseInt(line.trim());
-          if (!isNaN(value)) {
-            this.words[index] = value;
-          }
-        }
-      });
-    } catch (err) {
-      console.error(err);
-      return;
+      data = fs.readFileSync(absolutePath, "utf8");
+    } catch {
+      throw Error("File not found: " + fileName);
     }
+
+    const lines = data.split("\n");
+    // Load program into memory
+    lines.forEach((line, index) => {
+      if (index < 100) {
+        //uses parseInt to convert the string to an integer could use strings instead and change the processor
+        const value = parseInt(line.trim());
+        if (!isNaN(value)) {
+          this.words[index] = value;
+        }
+      }
+    });
   }
 
   /**
