@@ -29,6 +29,11 @@ class VirtualMachine {
   }
 
   tick() {
+    if(this.r.pc > 99) {
+      console.error("Program counter exceeded memory bounds. Halting program");
+      this.r.isEnd = true;
+      return;
+    }
     this.r.ir = this.memory.getLoc(this.r.pc);
     this.r.pc++;
     this.execute();
