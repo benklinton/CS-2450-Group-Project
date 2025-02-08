@@ -4,14 +4,21 @@ const { Register } = require("./register");
 const readLineSync = require("readline-sync");
 
 class VirtualMachine {
-  constructor(progam="") {
+  constructor(program) {
     this.r = new Register();
     this.memory = new Memory();
     this.reader = readLineSync;
 
     //load the program into memory if there is one
-    if (program != "") {
-      this.memory.loadProgram(progam);
+    if (program && typeof program === 'string' && program.trim() !== "") {
+      try {
+        this.memory.loadProgram(program);
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    }
+    else {
+      throw new Error("No valid program loaded");
     }
   }
 
