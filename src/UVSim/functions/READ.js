@@ -16,6 +16,6 @@ const READ = (vm, v) => {
   } else {
     throw Error("Invalid Opcode")
   }
-};
+}
 
 module.exports = { READ };

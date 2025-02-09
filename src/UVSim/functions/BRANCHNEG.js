@@ -7,6 +7,7 @@
  */
 const BRANCHNEG = (vm, v) => {
   console.log("BRANCHNEG");
+  // Branch to a specific location in memory if the accumulator is negative.
   if (vm.r.acc < 0) {
     vm.r.pc = v;
   }

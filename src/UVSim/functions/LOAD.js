@@ -6,9 +6,9 @@
  * value - the value passed by the instruction otherwise known as operand
  */
 const LOAD = (vm, v) => {
-  console.log("LOAD");
-
+  // Load a word from a specific location in memory into the accumulator.
   vm.r.acc = vm.memory.getLoc(v);
+  console.log("LOAD");
 };
 
 module.exports = { LOAD };
