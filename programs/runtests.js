@@ -69,7 +69,7 @@ function main() {
                 vm.memory.words.splice(0,test.program.length,...test.program);
             }
             //Override method to put in args string instead
-            vm.reader.question = function(_input) {return test.args.pop()};
+            vm.reader.question = function(_input) {return test.args.shift()};
             try {
                 vm.run();
             } catch (err) {
@@ -86,6 +86,9 @@ function main() {
             passed += 1;
         } else {
             failed += 1;
+            //if(typeof vm != "undefined") {
+            //    outstream(vm.memory.words);
+            //}
             errstream(`Failed test - ${test.title}
 Expected: ${test.expected_r}
 Actual Result: ${str_outputs.replace(/\t/g,"\n")}`);

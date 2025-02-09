@@ -7,7 +7,7 @@
  */
 const READ = (vm, v) => {
   console.log("READ");
-  const input = vm.reader.question("").trim();
+  const input = parseFloat(vm.reader.question("").trim());
   //This puts the input in memory if 1. the input is a number 
   //2. the input isnt a number just because it was trimmed 
   //3. the input is not a decimal 4. the input falls in range (-9999 to +9999)

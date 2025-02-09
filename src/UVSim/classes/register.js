@@ -13,7 +13,6 @@ class Register {
   mar = 0;
   acc = 0;
 
-  isPaused = false;
   isEnd = false;
 
   constructor() {

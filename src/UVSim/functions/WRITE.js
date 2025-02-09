@@ -7,7 +7,6 @@
  */
 const WRITE = (vm, v) => {
   console.log("WRITE");
-
   console.log(vm.memory.getLoc(v));
 };
 

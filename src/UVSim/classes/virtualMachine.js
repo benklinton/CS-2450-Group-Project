@@ -16,7 +16,7 @@ class VirtualMachine {
   }
 
   run() {
-    while (!this.r.isPaused && !this.r.isEnd) {
+    while (!this.r.isEnd) {
       this.tick();
     }
   }

@@ -4,6 +4,12 @@ Test1.txt
 7
 10 7,READ,43 0,HALT,15
 
+Read File Into Memory 2
+9
+Kevin
+-1
+Error: File DNE: Kevin
+
 Read Word Into Memory 1
 5
 +1010
@@ -55,18 +61,17 @@ Load/Store Value Into Acc 4
 10 53,READ,Out of Bounds Value: 10101
 
 Execute Commands 1
-5
-+1020
-+2020
-+3008
-+3309
-+2121
-+1121
+5 5 2
++1050
++1051
++1052
++3050
++3051
++3352
++2163
 +4300
-+0005
-+0010
-20
-10 20,READ,20 20,LOAD,30 08,ADD,33 09,MULTIPLY,21 21,STORE,11 21,WRITE,43 0,HALT,20
+63
+10 50,READ,10 51,READ,10 52,READ,30 50,ADD,30 51,ADD,33 52,MULTIPLY,21 63,STORE,43 0,HALT,20
 
 Execute Commands 2
 5
@@ -88,17 +93,126 @@ Opcodes 2
 -1
 44 0,Out Of Bounds: 100
 
-Write to Console 1
-735
-+1045
-+1145
-+4300
-45
-10 45,READ,11 45,WRITE,43 0,HALT,735
-
-Write to Console 2
+Program Halts
 -1
-+1145
 +4300
-45
-11 45,WRITE,43,0,HALT, 
++2000
+-1
+43 0,HALT
+
+Branch Test
+-1
++4004
++3020
++2100
++2000
++4300
+-1
+40 4,BRANCH,43 0,HALT
+
+Branch Neg Test 1
+-1
++4104
++3020
++2100
++2000
++4300
+-1
+41 4,BRANCHNEG,30 20,ADD,21 0,STORE,20 0,LOAD,43 0,HALT
+
+Branch Neg Test 2
+-1
++3105
++4104
++2100
++2000
++4300
++10
+-1
+31 5,SUBTRACT,41 4,BRANCHNEG,43 0,HALT
+
+Branch Zero Test 1
+-1
++3105
++4204
++2100
++2000
++4300
++20
+-1
+31 5,SUBTRACT,42 4,BRANCHZERO,21 0,STORE,20 0,LOAD,43 0,HALT
+
+Branch Zero Test 2
+-1
++4203
++2100
++2000
++4300
+-1
+42 3,BRANCHZERO,43 0,HALT
+
+Counter exceeds threshold
+-1
++1010
+-1
+10 10,READ,0 -1,Out Of Bounds: 100
+
+Add Value to Accumulator
+9
++1040
++2040
++3005
++2141
++4300
++1
+41
+10 40,READ,20 40,LOAD,30 5,ADD,21 41,STORE,43 0,HALT,10
+
+Subtract Value from Accumulator
+9
++1040
++2040
++3105
++2141
++4300
++1
+41
+10 40,READ,20 40,LOAD,31 5,SUBTRACT,21 41,STORE,43 0,HALT,8
+
+Multiply Value to Accumulator
+9
++1040
++2040
++3305
++2141
++4300
++2
+41
+10 40,READ,20 40,LOAD,33 5,MULTIPLY,21 41,STORE,43 0,HALT,18
+
+Divide Value from Accumulator
+14
++1040
++2040
++3205
++2141
++4300
++7
+41
+10 40,READ,20 40,LOAD,32 5,DIVIDE,21 41,STORE,43 0,HALT,2
+
+Write to Console 1
+-1
++1102
++4300
++735
+-1
+11 2,WRITE,735,43 0,HALT
+
+Write To Console 2
+-1
++1169
++4300
+-1
+11 69,WRITE,0,43 0,HALT
+

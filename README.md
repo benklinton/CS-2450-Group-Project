@@ -79,9 +79,9 @@ Tests are done by running
 ```
 node runtests.js
 ```
-within the programs directory.
+within the "programs" directory.
 
-Tests are created in UVSimTests.txt. They are seperated by two newline characters.
+Tests are created in UVSimTests.txt (also in programs). They are seperated by two newline characters.
 A test passes if it matches the output of the program after being fed the test.
 Each test is based on the following format:
 Title - 1 line - Name of the test
@@ -121,3 +121,5 @@ However errors may be included as an output.
 Example: 
 10 7,READ,43 0,HALT,15
 ```
+If an operator would write to the screen, such as WRITE, the value it is
+writing will come directly after its name in the output.
