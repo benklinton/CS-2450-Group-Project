@@ -1,20 +1,22 @@
 const { functions } = require("../functions/functions");
 const { Memory } = require("./memory");
 const { Register } = require("./register");
+const readLineSync = require('readline-sync')
 
 class VirtualMachine {
-  constructor(progam) {
+  constructor(progam="") {
     this.r = new Register();
     this.memory = new Memory();
+    this.reader = readLineSync;
 
-    //load the program into memory
-    this.memory.loadProgram(progam);
-    //run the program
-    this.run();
+    //load the program into memory if there is one
+    if (progam != "") {
+      this.memory.loadProgram(progam);
+    }
   }
 
   run() {
-    while (!this.r.isPaused && !this.r.isEnd) {
+    while (!this.r.isEnd) {
       this.tick();
     }
   }
@@ -50,7 +52,9 @@ class VirtualMachine {
     }
 
     //DEBUG for opcode and operand
-    console.log(opcode, operand);
+    if (opcode != 0 || operand != 0) {
+      console.log(opcode, operand);
+    }
     return functions?.[opcode]?.(this, operand);
   }
 }

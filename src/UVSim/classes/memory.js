@@ -5,19 +5,21 @@ class Memory {
 
   /**
    * Loads a program into memory from a file
-   * @param {the path to a file to be loaded into memory} fileName
-   * @returns
+   * @param {string} fileName
+   * the path to a file to be loaded into memory
    */
   loadProgram(fileName) {
     const fs = require("fs");
     const path = require("path");
     const absolutePath = path.resolve(process.cwd(), fileName);
-
-    try {
       // Read file synchronously
-      const data = fs.readFileSync(absolutePath, "utf8");
+      let data;
+      try {      
+        data = fs.readFileSync(absolutePath, "utf8");
+      } catch {
+        throw Error(`File DNE: ${fileName}`)
+      }
       const lines = data.split("\n");
-
       // Load program into memory
       lines.forEach((line, index) => {
         if (index < 100) {
@@ -28,35 +30,34 @@ class Memory {
           }
         }
       });
-    } catch (err) {
-      console.error(err);
-      return;
-    }
   }
 
   /**
    * Loads a location (or word) from the memory array at the specified location
-   * @param {The location at which the word or line is loaded from, [00-99]} loc
-   * @returns
+   * @param {int} loc
+   * The location at which the word or line is loaded from, [00-99]
+   * @returns {string}
    */
   getLoc(loc = 0) {
     if (loc < 0 || loc > 99) {
-      throw new Error("Accessing location out of bounds, loc: " + loc);
+      throw new Error("Out Of Bounds: " + loc);
     }
     return this.words[loc];
   }
 
   /**
    * Overwrites a location in memory with a new value
-   * @param {The location at which the line in memory will be overwritten} loc
-   * @param {The value with which the line will be written} value
+   * @param {int} loc
+   * The location at which the line in memory will be overwritten
+   * @param {int} value
+   * The value with which the line will be written
    */
   setLoc(loc = 0, value = 0) {
     if (loc < 0 || loc > 99) {
-      throw new Error("Setting location out of bounds, loc: " + loc);
+      throw new Error("Out of Bounds Location: " + loc);
     }
     if (value > 9999 || value < -9999) {
-      throw new Error("Setting value out of bounds, value: " + value);
+      throw new Error("Out of Bounds Value: " + value);
     }
     this.words[loc] = value;
   }

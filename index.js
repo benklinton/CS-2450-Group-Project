@@ -9,6 +9,8 @@ function main() {
     process.exit(1);
   }
   let vm = new VirtualMachine(args[0]);
+  //Moving run command here for reusability
+  vm.run();
 }
 
 main();
