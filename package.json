@@ -19,7 +19,7 @@
     "build": "npm run build-react && electron-builder",
     "start": "electron .",
     "build-react": "cd src/renderer && npm run build",
-    "dev": "npx concurrently \"npm run react\" \"npm run start\"",
+    "dev": "npm run react",
     "react": "cd src/renderer && npm start"
   },
   "build": {

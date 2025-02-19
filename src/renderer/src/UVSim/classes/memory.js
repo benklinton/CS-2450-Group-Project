@@ -1,4 +1,4 @@
-class Memory {
+export class Memory {
   constructor() {
     this.words = Array.from({ length: 100 }, () => 0);
   }
@@ -8,28 +8,18 @@ class Memory {
    * @param {string} fileName
    * the path to a file to be loaded into memory
    */
-  loadProgram(fileName) {
-    const fs = require("fs");
-    const path = require("path");
-    const absolutePath = path.resolve(process.cwd(), fileName);
-      // Read file synchronously
-      let data;
-      try {      
-        data = fs.readFileSync(absolutePath, "utf8");
-      } catch {
-        throw Error(`File DNE: ${fileName}`)
-      }
-      const lines = data.split("\n");
-      // Load program into memory
-      lines.forEach((line, index) => {
-        if (index < 100) {
-          //uses parseInt to convert the string to an integer could use strings instead and change the processor
-          const value = parseInt(line.trim());
-          if (!isNaN(value)) {
-            this.words[index] = value;
-          }
+  loadProgram(data) {
+    const lines = data.split("\n");
+    // Load program into memory
+    lines.forEach((line, index) => {
+      if (index < 100) {
+        //uses parseInt to convert the string to an integer could use strings instead and change the processor
+        const value = parseInt(line.trim());
+        if (!isNaN(value)) {
+          this.words[index] = value;
         }
-      });
+      }
+    });
   }
 
   /**
@@ -69,5 +59,3 @@ class Memory {
     this.words = Array.from({ length: 100 }, () => 0);
   }
 }
-
-module.exports = { Memory };

@@ -5,9 +5,9 @@
  * @param {int} v
  * value - the value passed by the instruction otherwise known as operand
  */
-const BRANCHZERO = (vm, v) => {
+export const BRANCHZERO = (vm, v) => {
   // Branch to a specific location in memory if the accumulator is zero.
-  if(vm.r.acc === 0) {
+  if (vm.r.acc === 0) {
     vm.r.pc = v;
   }
   console.log("BRANCHZERO");
@@ -15,5 +15,3 @@ const BRANCHZERO = (vm, v) => {
     vm.r.pc = v;
   }
 };
-
-module.exports = { BRANCHZERO };

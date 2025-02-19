@@ -7,7 +7,7 @@
   @var isPaused - if the program is paused somewhere in the loop
   @var isEnd - if the program has ended this should be updated to true
 */
-class Register {
+export class Register {
   pc = 0;
   ir = 0;
   mar = 0;
@@ -22,5 +22,3 @@ class Register {
     this.acc = 0;
   }
 }
-
-module.exports = { Register };

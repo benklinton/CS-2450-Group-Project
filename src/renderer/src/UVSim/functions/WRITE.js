@@ -5,11 +5,8 @@
  * @param {int} v
  * value - the value passed by the instruction otherwise known as operand
  */
-const BRANCH = (vm, v) => {
-  // Branch to a specific location in memory.
-  vm.r.pc = v;
-  console.log("BRANCH");
-  vm.r.pc = v;
+export const WRITE = (vm, v) => {
+  console.log("WRITE");
+  // Write a word from a specific location in memory to the console.
+  console.log(vm.memory.getLoc(v));
 };
-
-module.exports = { BRANCH };

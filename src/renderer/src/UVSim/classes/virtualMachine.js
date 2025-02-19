@@ -1,10 +1,10 @@
-const { functions } = require("../functions/functions");
-const { Memory } = require("./memory");
-const { Register } = require("./register");
-const readLineSync = require('readline-sync')
+import { functions } from "../functions/functions.js";
+import { Memory } from "./memory.js";
+import { Register } from "./register.js";
+import readLineSync from "readline-sync";
 
-class VirtualMachine {
-  constructor(progam="") {
+export class VirtualMachine {
+  constructor(progam = "") {
     this.r = new Register();
     this.memory = new Memory();
     this.reader = readLineSync;
@@ -58,5 +58,3 @@ class VirtualMachine {
     return functions?.[opcode]?.(this, operand);
   }
 }
-
-module.exports = { VirtualMachine };

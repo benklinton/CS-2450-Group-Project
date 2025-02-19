@@ -5,11 +5,9 @@
  * @param {int} v
  * value - the value passed by the instruction otherwise known as operand
  */
-const HALT = (vm, v) => {
+export const HALT = (vm, v) => {
   // Halt the program.
   vm.r.isEnd = true;
   console.log("HALT");
   vm.r.isEnd = true;
 };
-
-module.exports = { HALT };
