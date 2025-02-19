@@ -8,6 +8,8 @@
 export const STORE = (vm, v) => {
   // Store a word from the accumulator into a specific location in memory.
   vm.memory.setLoc(v, vm.r.acc);
-  console.log("STORE");
-  vm.c.log("STORE");
+  if (vm.r.isDebugging || vm.r.isTesting) {
+    console.log("STORE");
+    vm.c.log("STORE");
+  }
 };

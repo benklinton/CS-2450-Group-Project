@@ -1,7 +1,8 @@
 export class Memory {
   words = Array.from({ length: 100 }, () => 0);
-  constructor() {
+  constructor(rerender) {
     this.words = Array.from({ length: 100 }, () => 0);
+    this.rerender = rerender;
   }
 
   /**
@@ -62,5 +63,6 @@ export class Memory {
    */
   clear() {
     this.words = Array.from({ length: 100 }, () => 0);
+    this.rerender();
   }
 }

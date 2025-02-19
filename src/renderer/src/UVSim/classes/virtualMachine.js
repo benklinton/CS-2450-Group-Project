@@ -4,33 +4,59 @@ import { Memory } from "./memory.js";
 import { Register } from "./register.js";
 
 export class VirtualMachine {
-  constructor(progam = "") {
-    this.r = new Register();
-    this.memory = new Memory();
-    this.console = new VMConsole();
-
-    //load the program into memory if there is one
-    if (progam != "") {
-      this.memory.loadProgram(progam);
-    }
+  constructor(rerender, inputRef) {
+    this.r = new Register(rerender);
+    this.memory = new Memory(rerender);
+    this.c = new VMConsole(rerender);
+    this.rerender = rerender;
+    this.inputRef = inputRef;
   }
 
   loadProgram(program) {
     this.memory.loadProgram(program);
-    this.console.log("Program loaded");
-    console.log("Program loaded");
+    this.r.reset();
+    this.c.log("Program loaded");
+    this.rerender();
   }
 
   run() {
+    this.r.isRunning = true;
     while (!this.r.isEnd) {
       this.tick();
+      this.rerender();
+      if (this.r.isWaitingForInput) {
+        break;
+      }
     }
   }
 
   tick() {
-    this.r.ir = this.memory.getLoc(this.r.pc);
-    this.r.pc++;
-    this.execute();
+    if (this.r.isWaitingForInput || this.r.isEnd) {
+      if (this.r.isWaitingForInput) this.inputRef?.current?.focus();
+      return;
+    }
+    try {
+      this.r.ir = this.memory.getLoc(this.r.pc);
+      this.r.pc++;
+
+      this.execute();
+    } catch (e) {
+      console.log(e);
+      this.c.log(e.message, "error");
+      this.r.isEnd = true;
+    }
+    this.rerender();
+  }
+
+  sendInput(input) {
+    if (!this.r.isWaitingForInput) return;
+    const i = parseFloat(input.trim());
+    this.memory.setLoc(this.r.r1, i);
+    this.r.isWaitingForInput = false;
+    this.inputRef.current.placeholder = "Console Input";
+    if (this.r.isRunning) {
+      this.run();
+    }
   }
 
   getOpcode() {
@@ -59,7 +85,6 @@ export class VirtualMachine {
 
     //DEBUG for opcode and operand
     if (opcode != 0 || operand != 0) {
-      this.console.log(opcode, operand);
       console.log(opcode, operand);
     }
     return functions?.[opcode]?.(this, operand);

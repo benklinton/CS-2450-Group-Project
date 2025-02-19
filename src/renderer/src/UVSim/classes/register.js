@@ -12,13 +12,43 @@ export class Register {
   ir = 0;
   mar = 0;
   acc = 0;
+  r1 = 0;
 
   isEnd = false;
+  isWaitingForInput = false;
+  isRunning = false;
+  isDebugging = false;
+  isTesting = false;
 
-  constructor() {
+  constructor(rerender) {
     this.pc = 0;
     this.ir = 0;
     this.mar = 0;
     this.acc = 0;
+    this.r1 = 0;
+
+    this.isEnd = false;
+    this.isWaitingForInput = false;
+    this.isRunning = false;
+    this.isDebugging = false;
+    this.isTesting = false;
+
+    this.rerender = rerender;
+  }
+
+  reset() {
+    this.pc = 0;
+    this.ir = 0;
+    this.mar = 0;
+    this.acc = 0;
+    this.r1 = 0;
+
+    this.isEnd = false;
+    this.isWaitingForInput = false;
+    this.isRunning = false;
+    this.isDebugging = false;
+    this.isTesting = false;
+
+    this.rerender();
   }
 }

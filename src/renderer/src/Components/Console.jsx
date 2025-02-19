@@ -14,28 +14,59 @@ export const Console = () => {
   };
 
   return (
-    <div className="console-container">
-      <div className="sbg-dark d-flex gap-3 w-100 flex-row">
-        <button onClick={() => vm.run()}>Play</button>
-        <button onClick={() => vm.tick()}>Step</button>
-        <button onClick={() => vm.c.clear()}>Clear</button>
-        <button onClick={() => vm.r.reset()}>Reset Program</button>
+    <div className="console-container card bg-dark text-white pb-2 h-100">
+      <div className="bg-dark d-flex gap-3 w-100 flex-row card-header justify-content-between">
+        <div className="d-flex gap-3">
+          <button className="btn btn-success" onClick={() => vm.run()}>
+            Play
+          </button>
+          <button className="btn btn-warning" onClick={() => vm.tick()}>
+            Step
+          </button>
+        </div>
+        <div className="d-flex gap-3">
+          <button className="btn btn-light" onClick={() => vm.c.clear()}>
+            Clear
+          </button>
+          <button className="btn btn-light" onClick={() => vm.r.reset()}>
+            Reset Program
+          </button>
+        </div>
       </div>
-      <div className="console-output-container">
+      <div className="console-output-container card-body bg-black dark-scrollbar">
         {vm?.c?.outputs?.map((log, index) => (
-          <div key={index} className="w-100 d-flex gap-3 d-grid text-center">
-            {log}
+          <div
+            key={index}
+            className={`w-100 d-flex gap-3 d-grid text-center ${
+              log.type === "log" ? "text-white" : "text-danger"
+            }`}
+          >
+            {log.msg}
           </div>
         ))}
       </div>
       <div className="w-100 console-input-container">
         <form onSubmit={handleInput}>
-          <input
-            ref={inputRef}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            type="text"
-          />
+          <div className="input-group mb-3">
+            <input
+              className="form-control bg-light"
+              placeholder="Console Input"
+              aria-label="Console Input"
+              aria-describedby="basic-addon2"
+              ref={inputRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              type="text"
+            />
+            <div className="input-group-append">
+              <button
+                className="input-group-text btn btn-primary"
+                id="basic-addon2"
+              >
+                Send
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     </div>

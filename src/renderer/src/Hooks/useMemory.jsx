@@ -9,7 +9,7 @@ export const defaultMemory = {
   clear: () => {},
 };
 
-export const useMemory = (vm) => {
+export const useMemory = (vm, rerender) => {
   const setWord = (index, value) => {
     vm.memory.words[index] = value;
   };
@@ -72,6 +72,7 @@ export const useMemory = (vm) => {
    */
   const clear = () => {
     vm.memory.words = Array.from({ length: 100 }, () => 0);
+    rerender();
   };
 
   useEffect(() => {

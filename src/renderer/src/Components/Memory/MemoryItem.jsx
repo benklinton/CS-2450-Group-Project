@@ -6,10 +6,14 @@ export const MemoryItem = ({ loc, value, selected }) => {
         selected ? "bg-primary" : ""
       }`}
     >
-      <span className={`${selected ? "" : "bg-secondary text-white"} col-1`}>
+      <span
+        className={`${
+          selected ? "" : "bg-secondary"
+        } text-white col-lg-2 col-2`}
+      >
         {loc}
       </span>
-      <span className={`${selected ? "" : "text-white"}`}>{value}</span>
+      <span className={`text-white`}>{value}</span>
     </div>
   );
 };

@@ -18,7 +18,7 @@ export const useVirtualMachine = () => {
   });
 
   useRegister(vm.current, rerender);
-  useMemory(vm.current);
+  useMemory(vm.current, rerender);
   useConsole(vm.current, rerender);
   const inputRef = useRef(null);
 

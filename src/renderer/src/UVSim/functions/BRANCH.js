@@ -8,6 +8,8 @@
 export const BRANCH = (vm, v) => {
   // Branch to a specific location in memory.
   vm.r.pc = v;
-  console.log("BRANCH");
-  vm.c.log("BRANCH");
+  if (vm.r.isDebugging || vm.r.isTesting) {
+    console.log("BRANCH");
+    vm.c.log("BRANCH");
+  }
 };

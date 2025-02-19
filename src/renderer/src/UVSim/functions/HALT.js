@@ -8,6 +8,8 @@
 export const HALT = (vm, v) => {
   // Halt the program.
   vm.r.isEnd = true;
-  console.log("HALT");
-  vm.c.log("HALT");
+  if (vm.r.isDebugging || vm.r.isTesting) {
+    console.log("HALT");
+    vm.c.log("HALT");
+  }
 };
