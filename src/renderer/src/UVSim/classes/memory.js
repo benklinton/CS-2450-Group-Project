@@ -1,4 +1,5 @@
 export class Memory {
+  words = Array.from({ length: 100 }, () => 0);
   constructor() {
     this.words = Array.from({ length: 100 }, () => 0);
   }
@@ -50,6 +51,10 @@ export class Memory {
       throw new Error("Out of Bounds Value: " + value);
     }
     this.words[loc] = value;
+  }
+
+  getMemory() {
+    return this.words;
   }
 
   /**

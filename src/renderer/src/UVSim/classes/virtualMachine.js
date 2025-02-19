@@ -1,13 +1,11 @@
 import { functions } from "../functions/functions.js";
 import { Memory } from "./memory.js";
 import { Register } from "./register.js";
-import readLineSync from "readline-sync";
 
 export class VirtualMachine {
   constructor(progam = "") {
     this.r = new Register();
     this.memory = new Memory();
-    this.reader = readLineSync;
 
     //load the program into memory if there is one
     if (progam != "") {

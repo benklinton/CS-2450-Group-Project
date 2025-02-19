@@ -1,4 +1,33 @@
 .app-container {
   display: flex;
+  width: calc(100% - 32px);
+  padding: 16px;
+}
+
+.console-container {
+  background-color: black;
+  color: white;
   width: 100%;
+  min-height: 500px;
+}
+
+.home-container {
+  max-height: 100vh;
+  height: 100vh;
+}
+
+.max-height {
+  max-height: 100vh;
+}
+
+.file-container {
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 200px;
+}
+
+.memory-container {
+  max-height: 500px;
 }
