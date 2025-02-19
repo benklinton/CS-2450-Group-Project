@@ -1,4 +1,5 @@
 import { functions } from "../functions/functions.js";
+import { VMConsole } from "./console.js";
 import { Memory } from "./memory.js";
 import { Register } from "./register.js";
 
@@ -6,11 +7,18 @@ export class VirtualMachine {
   constructor(progam = "") {
     this.r = new Register();
     this.memory = new Memory();
+    this.console = new VMConsole();
 
     //load the program into memory if there is one
     if (progam != "") {
       this.memory.loadProgram(progam);
     }
+  }
+
+  loadProgram(program) {
+    this.memory.loadProgram(program);
+    this.console.log("Program loaded");
+    console.log("Program loaded");
   }
 
   run() {
@@ -51,6 +59,7 @@ export class VirtualMachine {
 
     //DEBUG for opcode and operand
     if (opcode != 0 || operand != 0) {
+      this.console.log(opcode, operand);
       console.log(opcode, operand);
     }
     return functions?.[opcode]?.(this, operand);

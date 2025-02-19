@@ -11,6 +11,20 @@
   min-height: 500px;
 }
 
+.console-output-container {
+  height: calc(500px - 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+  overflow-y: auto;
+  max-height: 470px;
+}
+
+.console-input-container {
+  height: 30px;
+}
+
 .home-container {
   max-height: 100vh;
   height: 100vh;

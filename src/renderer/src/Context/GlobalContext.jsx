@@ -1,18 +1,27 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useMemo, useState, useEffect } from "react";
 import { VirtualMachine } from "../UVSim/classes/virtualMachine";
+import { useVirtualMachine } from "../Hooks/useVirtualMachine";
 
 export const GlobalContext = createContext({
   vm: new VirtualMachine(),
 });
 
 export const GlobalContextProvider = ({ children }) => {
-  const vm = useState(new VirtualMachine());
-  console.log(vm);
+  // const [vm, setVM] = useState(new VirtualMachine());
+  const { vm: vmRef, inputRef, rerenderCount } = useVirtualMachine();
+  const [vm, setVM] = useState(vmRef);
+
+  useEffect(() => {
+    setVM({ ...vmRef });
+  }, [vmRef, rerenderCount]);
+
   const value = useMemo(
     () => ({
-      vm: vm?.[0],
+      vm: vm,
+      inputRef: inputRef,
+      rerenderCount: rerenderCount,
     }),
-    [vm?.[0], vm?.[0]?.memory?.words]
+    [rerenderCount]
   );
 
   return (

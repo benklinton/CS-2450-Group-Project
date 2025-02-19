@@ -9,5 +9,5 @@ export const BRANCH = (vm, v) => {
   // Branch to a specific location in memory.
   vm.r.pc = v;
   console.log("BRANCH");
-  vm.r.pc = v;
+  vm.c.log("BRANCH");
 };
