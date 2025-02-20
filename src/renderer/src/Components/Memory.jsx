@@ -9,7 +9,13 @@ export const Memory = () => {
       <div className="card-header text-white d-flex justify-content-between align-items-center">
         <h5 className="card-title m-0">Memory</h5>
         <div className="d-flex flex-row">
-          <button onClick={() => vm.memory.clear()} className="btn btn-light">
+          <button
+            onClick={() => {
+              vm.r.reset();
+              vm.memory.clear();
+            }}
+            className="btn btn-light"
+          >
             Clear
           </button>
         </div>
