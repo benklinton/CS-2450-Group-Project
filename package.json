@@ -26,6 +26,7 @@
     "appId": "com.example.myapp",
     "files": [
       "index.js",
+      "src/files/**/*",
       "src/electron/**/*",
       "src/renderer/build/**/*",
       "src/UVSim/**/*",
