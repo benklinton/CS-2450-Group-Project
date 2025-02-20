@@ -38,7 +38,11 @@ export const Console = () => {
           <div
             key={index}
             className={`w-100 d-flex gap-3 d-grid text-center ${
-              log.type === "log" ? "text-white" : "text-danger"
+              log.type === "error"
+                ? "text-danger"
+                : log.type === "success"
+                ? "text-success"
+                : "text-white"
             }`}
           >
             {log.msg}

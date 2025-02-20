@@ -11,15 +11,25 @@ export class Memory {
    * the path to a file to be loaded into memory
    */
   loadProgram(data) {
+    this.words = Array.from({ length: 100 }, () => 0);
     const lines = data.split("\n");
     // Load program into memory
     lines.forEach((line, index) => {
       if (index < 100) {
+        const trimmed = line.trim();
+        if (trimmed === "") return;
         //uses parseInt to convert the string to an integer could use strings instead and change the processor
         const value = parseInt(line.trim());
-        if (!isNaN(value)) {
+        if (!isNaN(value) && /^[+-]?\d+$/.test(trimmed)) {
           this.words[index] = value;
+        } else {
+          throw new Error(
+            `Failed to load program: Invalid instruction on line ${index}: ` +
+              trimmed
+          );
         }
+      } else {
+        throw new Error("Failed to load program: Program is too large");
       }
     });
   }

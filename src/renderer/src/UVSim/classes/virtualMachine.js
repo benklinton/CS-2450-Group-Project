@@ -13,9 +13,13 @@ export class VirtualMachine {
   }
 
   loadProgram(program) {
-    this.memory.loadProgram(program);
-    this.r.reset();
-    this.c.log("Program loaded");
+    try {
+      this.memory.loadProgram(program);
+      this.r.reset();
+    } catch (e) {
+      this.c.log(e.message, "error");
+    }
+    // this.c.log("Program loaded");
     this.rerender();
   }
 
@@ -50,12 +54,18 @@ export class VirtualMachine {
 
   sendInput(input) {
     if (!this.r.isWaitingForInput) return;
-    const i = parseFloat(input.trim());
-    this.memory.setLoc(this.r.r1, i);
-    this.r.isWaitingForInput = false;
-    this.inputRef.current.placeholder = "Console Input";
-    if (this.r.isRunning) {
-      this.run();
+
+    try {
+      const i = parseFloat(input.trim());
+      this.memory.setLoc(this.r.r1, i);
+      this.r.isWaitingForInput = false;
+      this.inputRef.current.placeholder = "Console Input";
+      if (this.r.isRunning) {
+        this.run();
+      }
+    } catch (e) {
+      this.r.isEnd = true;
+      this.c.log(e.message, "error");
     }
   }
 
@@ -84,7 +94,11 @@ export class VirtualMachine {
     }
 
     //DEBUG for opcode and operand
-    if (opcode != 0 || operand != 0) {
+    if (
+      (opcode !== 0 || operand !== 0) &&
+      (this.r.isDebugging || this.r.isTesting)
+    ) {
+      this.c.log(`${opcode} ${operand}`, "log");
       console.log(opcode, operand);
     }
     return functions?.[opcode]?.(this, operand);
