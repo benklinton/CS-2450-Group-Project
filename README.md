@@ -23,30 +23,42 @@ npm install
 6. exit src/renderer
 
 ```
-cd .../...
+cd ../..
 ```
 
-7. Start project by specifing route to program file to be executed. (I have put example program files in the ./programs folder)
+7. Start the electron project by running
 
 ```
-node index.js <path to program>
+npm run react-build
+npm run start
 ```
 
-### example
+8. Start the development react server by running
 
 ```
-    node index.js ./programs/Test1.txt
+npm run dev
 ```
+
+# Usage
+
+Once the program is running you can load in programs from a folder within documents
+
+Click on one of the programs in the files section, once it is opened it will load it into memory
+you can step forward one step at a time or just run
+
+When the program needs user input it will move the cursor to the input box and say waiting for user input...
+
+When running tests tests will run automatically and notify the user of the results in the console
 
 # Building
 
-To convert index.js to an executable, run:
+To convert the project into an application run the following after installing all dependencies
 
 ```
 npm run build
 ```
 
-The output will appear in a new folder called dist it should output each program for Mac:
+The output will appear in a new folder called dist it should output a program for Mac:
 
 **app-macos**
 
@@ -57,10 +69,6 @@ Linux:
 Windows:
 
 **app-win.exe**
-
-# Notes
-
-maybe we could consider using electron if needing to move forward for app gui
 
 # Functions
 
@@ -88,10 +96,10 @@ vm.memory.setLoc(23,1020)
 
 # Testing
 
-Tests are done by running
+Tests are done by running the application
 
 ```
-node runtests.js
+npm run start
 ```
 
 within the "programs" directory.
