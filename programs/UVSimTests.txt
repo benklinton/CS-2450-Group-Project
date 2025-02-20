@@ -2,7 +2,7 @@ Read File Into Memory 1
 15
 Test1.txt
 7
-10 7,READ,43 0,HALT,15
+10 7,READ,43 0,HALT
 
 Read File Into Memory 2
 9
@@ -15,14 +15,14 @@ Read Word Into Memory 1
 +1010
 +4300
 10
-10 10,READ,43 0,HALT,5
+10 10,READ,43 0,HALT
 
 Read Word Into Memory 2
 7
 +1090.5
 +4300
 90.5
-10 90.5,READ,Invalid Opcode
+Failed to load program: Invalid instruction on line 0: 1090.5
 
 Load/Store Value Into Acc 1
 10
@@ -31,7 +31,7 @@ Load/Store Value Into Acc 1
 +2111
 +4300
 11
-10 10,READ,20 10,LOAD,21 11,STORE,43 0,HALT,10
+10 10,READ,20 10,LOAD,21 11,STORE,43 0,HALT
 
 Load/Store Value Into Acc 2
 21
@@ -40,7 +40,7 @@ Load/Store Value Into Acc 2
 +2132
 +4300
 32
-10 21,READ,20 21,LOAD,21 32,STORE,43 0,HALT,21
+10 21,READ,20 21,LOAD,21 32,STORE,43 0,HALT
 
 Load/Store Value Into Acc 3
 50
@@ -71,7 +71,7 @@ Execute Commands 1
 +2163
 +4300
 63
-10 50,READ,10 51,READ,10 52,READ,30 50,ADD,30 51,ADD,33 52,MULTIPLY,21 63,STORE,43 0,HALT,20
+10 50,READ,10 51,READ,10 52,READ,30 50,ADD,30 51,ADD,33 52,MULTIPLY,21 63,STORE,43 0,HALT
 
 Execute Commands 2
 5
@@ -166,7 +166,7 @@ Add Value to Accumulator
 +4300
 +1
 41
-10 40,READ,20 40,LOAD,30 5,ADD,21 41,STORE,43 0,HALT,10
+10 40,READ,20 40,LOAD,30 5,ADD,21 41,STORE,43 0,HALT
 
 Subtract Value from Accumulator
 9
@@ -177,7 +177,7 @@ Subtract Value from Accumulator
 +4300
 +1
 41
-10 40,READ,20 40,LOAD,31 5,SUBTRACT,21 41,STORE,43 0,HALT,8
+10 40,READ,20 40,LOAD,31 5,SUBTRACT,21 41,STORE,43 0,HALT
 
 Multiply Value to Accumulator
 9
@@ -188,7 +188,7 @@ Multiply Value to Accumulator
 +4300
 +2
 41
-10 40,READ,20 40,LOAD,33 5,MULTIPLY,21 41,STORE,43 0,HALT,18
+10 40,READ,20 40,LOAD,33 5,MULTIPLY,21 41,STORE,43 0,HALT
 
 Divide Value from Accumulator
 14
@@ -199,7 +199,7 @@ Divide Value from Accumulator
 +4300
 +7
 41
-10 40,READ,20 40,LOAD,32 5,DIVIDE,21 41,STORE,43 0,HALT,2
+10 40,READ,20 40,LOAD,32 5,DIVIDE,21 41,STORE,43 0,HALT
 
 Write to Console 1
 -1
@@ -215,4 +215,3 @@ Write To Console 2
 +4300
 -1
 11 69,WRITE,0,43 0,HALT
-
