@@ -29,7 +29,7 @@ cd ../..
 7. Start the electron project by running
 
 ```
-npm run react-build
+npm run build-react
 npm run start
 ```
 
