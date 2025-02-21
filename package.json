@@ -16,13 +16,48 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "pkg . --debug --output dist/app"
+    "build": "npm run build-react && electron-builder",
+    "start": "electron .",
+    "build-react": "cd src/renderer && npm run build",
+    "dev": "npm run react",
+    "react": "cd src/renderer && npm start",
+    "init": "npm install && cd src/renderer && npm install && npm run build"
+  },
+  "build": {
+    "appId": "com.example.myapp",
+    "files": [
+      "index.js",
+      "src/files/**/*",
+      "src/electron/**/*",
+      "src/renderer/build/**/*",
+      "src/UVSim/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "pkg": "^5.8.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8"
   }
 }

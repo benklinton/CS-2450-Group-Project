@@ -1,4 +1,34 @@
-Read File Into Memory 1
+export const programSamples = [
+  { name: "sample1", content: `+1009` },
+  {
+    name: "test1",
+    content: `+1090.5
++4300`,
+  },
+  {
+    name: "sample2",
+    content: `+1009
++1010
++2009
++3110
++4107
++1109
++4300
++1110
++4300
++0000
++0000
+-99999
+`,
+  },
+  {
+    name: "Test1.txt",
+    content: `+1007
++4300`,
+  },
+  {
+    name: "uvSimTests.test",
+    content: `Read File Into Memory 1
 15
 Test1.txt
 7
@@ -214,4 +244,6 @@ Write To Console 2
 +1169
 +4300
 -1
-11 69,WRITE,0,43 0,HALT
+11 69,WRITE,0,43 0,HALT`,
+  },
+];

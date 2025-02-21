@@ -13,27 +13,52 @@ The project creates a virtual machine that reads instruction files specified to 
 npm install
 ```
 
-5. Start project by specifing route to program file to be executed. (I have put example program files in the ./programs folder)
+5. Install react deependencies
 
 ```
-node index.js <path to program>
+cd src/renderer
+npm install
 ```
 
-### example
+6. exit src/renderer
 
 ```
-    node index.js ./programs/Test1.txt
+cd ../..
 ```
+
+7. Start the electron project by running
+
+```
+npm run build-react
+npm run start
+```
+
+8. Start the development react server by running
+
+```
+npm run dev
+```
+
+# Usage
+
+Once the program is running you can load in programs from a folder within documents
+
+Click on one of the programs in the files section, once it is opened it will load it into memory
+you can step forward one step at a time or just run
+
+When the program needs user input it will move the cursor to the input box and say waiting for user input...
+
+When running tests tests will run automatically and notify the user of the results in the console
 
 # Building
 
-To convert index.js to an executable, run:
+To convert the project into an application run the following after installing all dependencies
 
 ```
 npm run build
 ```
 
-The output will appear in a new folder called dist it should output each program for Mac:
+The output will appear in a new folder called dist it should output a program for Mac:
 
 **app-macos**
 
@@ -44,10 +69,6 @@ Linux:
 Windows:
 
 **app-win.exe**
-
-# Notes
-
-maybe we could consider using electron if needing to move forward for app gui
 
 # Functions
 
@@ -62,7 +83,7 @@ vm.r.acc
 //sets the accumulator register value
 vm.r.acc = 0;
 
-//get the pointer counter 
+//get the pointer counter
 vm.r.pc
 //sets the pointer counter
 vm.r.pc = 0;
@@ -75,51 +96,65 @@ vm.memory.setLoc(23,1020)
 
 # Testing
 
-Tests are done by running
+Tests are done by running the application
+
 ```
-node runtests.js
+npm run start
 ```
+
 within the "programs" directory.
 
 Tests are created in UVSimTests.txt (also in programs). They are seperated by two newline characters.
 A test passes if it matches the output of the program after being fed the test.
 Each test is based on the following format:
 Title - 1 line - Name of the test
+
 ```
-Example: 
+Example:
 My Test 1
 ```
+
 Arguments - 1 line - A list of arguments for the READ operator.
 Each is seperated by a space. If you dont want one, put -1.
+
 ```
-Example: 
+Example:
 15 7 2
 ```
+
 There are two ways to write the "Program" part of a test.
 Program Option 1 - 1 line - Path to file with program. CD is the programs folder.
+
 ```
-Example: 
+Example:
 Test1.txt
 ```
+
 Program Option 2 - 1+ line - A list of lines of code to run. These are seperated by new line characters.
+
 ```
-Example: 
+Example:
 +1000
 +4300
 ```
+
 Memory Location - 1 line - A location in memory to load from. This will be added to the programs output
 If you dont want to load from memory, put -1.
+
 ```
-Example: 
+Example:
 45
 ```
+
 Expected Result - 1 line - The expected result of the program. Each console log/error is seperated by comma.
 Generally they follow this format:
 OPCODE OPERAND,FUNCTIONNAME,OPCODE2 OPERAND2,FUNCTIONNAME2...Memory Read
 However errors may be included as an output.
+
 ```
-Example: 
+Example:
 10 7,READ,43 0,HALT,15
 ```
+
 If an operator would write to the screen, such as WRITE, the value it is
 writing will come directly after its name in the output.
