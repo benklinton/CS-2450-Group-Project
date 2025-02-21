@@ -20,7 +20,8 @@
     "start": "electron .",
     "build-react": "cd src/renderer && npm run build",
     "dev": "npm run react",
-    "react": "cd src/renderer && npm start"
+    "react": "cd src/renderer && npm start",
+    "init": "npm install && cd src/renderer && npm install && npm run build"
   },
   "build": {
     "appId": "com.example.myapp",
