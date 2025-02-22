@@ -41,7 +41,7 @@ npm run dev
 
 # Usage
 
-Once the program is running you can load in programs from a folder within documents
+Once the program is running, sample files are automatically loaded into the files section 
 
 Click on one of the programs in the files section, once it is opened it will load it into memory
 you can step forward one step at a time or just run
@@ -104,7 +104,7 @@ npm run start
 
 within the "programs" directory.
 
-Tests are created in UVSimTests.txt (also in programs). They are seperated by two newline characters.
+Tests are created in UVSimTests.txt (found automatically in the files section). They are seperated by two newline characters.
 A test passes if it matches the output of the program after being fed the test.
 Each test is based on the following format:
 Title - 1 line - Name of the test
