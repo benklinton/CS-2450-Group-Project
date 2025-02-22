@@ -15,7 +15,7 @@ const os = require("os");
  */
 function getDefaultProgramPath() {
   // For now, using Documents folder for both platforms.
-  return path.join(os.homedir(), "Documents", "cs2450vm", "programs");
+  return path.join(__dirname, "..", "..", "programs");
 }
 
 /**
