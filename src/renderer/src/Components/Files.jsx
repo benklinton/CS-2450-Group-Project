@@ -23,7 +23,7 @@ import { TestingContext } from "../Context/TestingContext";
 
 export const Files = () => {
   const { vm } = useContext(GlobalContext);
-  const { files, getFiles, revealFolder, loadFile } =
+  const { files, getFiles, selectFolder, loadFile } =
     useContext(MessagingContext);
   const { runTests } = useContext(TestingContext);
   const [selectedProgram, setSelectedProgram] = useState(-1);
@@ -50,10 +50,10 @@ export const Files = () => {
           <button
             className="btn btn-secondary"
             onClick={() => {
-              revealFolder();
+              selectFolder();
             }}
           >
-            open folder
+            select folder
           </button>
           <button onClick={() => getFiles()} className="btn btn-secondary">
             refresh
