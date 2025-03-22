@@ -22,10 +22,41 @@ export const Memory = () => {
       </div>
       <div className="overflow-scroll dark-scrollbar">
         <div className="d-flex flex-column">
-          <MemoryItem loc={"pc"} value={vm.r.pc} />
-          <MemoryItem loc={"acc"} value={vm.r.acc} />
-          <MemoryItem loc={"ir"} value={vm.r.ir} />
-          <MemoryItem loc={"mar"} value={vm.r.mar} />
+          <MemoryItem
+            loc={"pc"}
+            value={vm.r.pc}
+            onChange={(loc, value) => {
+              if (Number(value) > 99) {
+                value = 99;
+              }
+              vm.r.pc = value;
+              vm.rerender();
+            }}
+          />
+          <MemoryItem
+            loc={"acc"}
+            value={vm.r.acc}
+            onChange={(loc, value) => {
+              vm.r.acc = value;
+              vm.rerender();
+            }}
+          />
+          <MemoryItem
+            loc={"ir"}
+            value={vm.r.ir}
+            onChange={(loc, value) => {
+              vm.r.ir = value;
+              vm.rerender();
+            }}
+          />
+          <MemoryItem
+            loc={"mar"}
+            value={vm.r.mar}
+            onChange={(loc, value) => {
+              vm.r.mar = value;
+              vm.rerender();
+            }}
+          />
           <div>|</div>
           {vm?.memory?.words?.map((cell, index) => (
             <MemoryItem
@@ -33,6 +64,10 @@ export const Memory = () => {
               key={index}
               loc={index}
               value={cell}
+              onChange={(loc, value) => {
+                vm.memory.setLoc(loc, value);
+                vm.rerender();
+              }}
             />
           ))}
         </div>
