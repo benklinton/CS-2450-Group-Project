@@ -28,13 +28,13 @@ function ensureDirectoryExists(directoryPath) {
 }
 
 /**
- * Reads the names of all files (not subdirectories) in the default programs folder.
- * If the folder does not exist, it is created.
+ * Reads the names of all files (not subdirectories) in the chosen directory.
+ * Defaults to the programs folder.
  */
-function getFilesFromProgramFolder() {
-  const directoryPath = getDefaultProgramPath();
+function getFilesFromProgramFolder(chosenDirectory = null) {
+  const directoryPath = chosenDirectory || getDefaultProgramPath();
   ensureDirectoryExists(directoryPath);
-  console.log(directoryPath);
+  console.log(`Using directory: ${directoryPath}, chosen: ${chosenDirectory}`);
   try {
     const items = fs.readdirSync(directoryPath);
     const files = items.filter((item) => {

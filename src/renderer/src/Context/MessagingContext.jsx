@@ -8,11 +8,12 @@ export const MessagingContext = createContext({
 
 export const MessagingContextProvider = ({ children }) => {
   const [files, setFiles] = useState([]);
+  const [chosenDirectory, setChosenDirectory] = useState(null)
   const { vm } = useContext(GlobalContext);
 
   useEffect(() => {
     // Notify Electron that the renderer is ready
-    window?.electron?.ipcRenderer?.send("renderer-ready");
+    window?.electron?.ipcRenderer?.send("renderer-ready", chosenDirectory);
 
     // Listen for messages from the main process
     window?.electron?.ipcRenderer?.on?.("files", (event, message) => {
@@ -35,9 +36,9 @@ export const MessagingContextProvider = ({ children }) => {
     };
   }, []);
 
-  const getFiles = () => {
+  const getFiles = (directory = chosenDirectory) => {
     if (window?.electron?.ipcRenderer)
-      window?.electron?.ipcRenderer?.send("get-files");
+      window?.electron?.ipcRenderer?.send("get-files", directory);
     else {
       setFiles(programSamples.map((file) => file.name));
     }
@@ -49,6 +50,7 @@ export const MessagingContextProvider = ({ children }) => {
         "load-file",
         {
           file: fileName,
+          directory: chosenDirectory,
         }
       );
       if (!response.file) {
@@ -67,8 +69,12 @@ export const MessagingContextProvider = ({ children }) => {
     }
   };
 
-  const revealFolder = () => {
-    window?.electron?.ipcRenderer?.send("open-program-folder");
+  const selectFolder = async () => {
+    const folderPath = await window.electron.ipcRenderer.invoke("select-folder");
+    if (folderPath) {
+      setChosenDirectory(folderPath);
+      getFiles(folderPath);
+    }
   };
 
   useEffect(() => {
@@ -80,9 +86,10 @@ export const MessagingContextProvider = ({ children }) => {
       files: files,
       getFiles,
       loadFile,
-      revealFolder,
+      selectFolder,
+      chosenDirectory,
     }),
-    [files, getFiles, loadFile, revealFolder]
+    [files, getFiles, loadFile, selectFolder, chosenDirectory]
   );
 
   return (

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("path");
 const {
   getFilesFromProgramFolder,
@@ -46,12 +46,12 @@ const startElectron = () => {
   });
 
   ipcMain.on("renderer-ready", (event, args) => {
-    const files = getFilesFromProgramFolder();
+    const files = getFilesFromProgramFolder(args);
     event.reply("files", { files: files });
   });
 
   ipcMain.on("get-files", (event, args) => {
-    const files = getFilesFromProgramFolder();
+    const files = getFilesFromProgramFolder(args);
     event.reply("files", { files: files });
   });
 
@@ -59,12 +59,28 @@ const startElectron = () => {
     console.log(args);
   });
 
+  ipcMain.handle("select-folder", async (event, args) => {
+    const result = await dialog.showOpenDialog({
+      properties: ["openDirectory"] // Allow only directory (folder) selection
+    });
+
+    if (result.canceled) {
+      return null; // User canceled the dialog
+    }
+
+    return result.filePaths[0]; // Return the selected folder
+  });
+
+  // likely unnecessary now
   ipcMain.on("open-program-folder", (event, args) => {
-    openFolder(getDefaultProgramPath());
+    openFolder(args);
   });
 
   ipcMain.handle("load-file", (event, args) => {
-    const file = loadFile(getDefaultProgramPath() + "/" + args.file);
+    if (args.directory == null) {
+      args.directory = getDefaultProgramPath();
+    }
+    const file = loadFile(args.directory + "/" + args.file);
     return { file: file, name: args.file };
   });
 };
