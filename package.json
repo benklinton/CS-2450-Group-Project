@@ -21,7 +21,8 @@
     "build-react": "cd src/renderer && npm run build",
     "dev": "npm run react",
     "react": "cd src/renderer && npm start",
-    "init": "npm install && cd src/renderer && npm install && npm run build"
+    "init": "npm install && cd src/renderer && npm install && npm run build",
+    "reload": "npm run init && npm run start"
   },
   "build": {
     "appId": "com.example.myapp",
