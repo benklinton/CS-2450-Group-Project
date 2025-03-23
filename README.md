@@ -29,7 +29,12 @@ you can step forward one step at a time or just run
 
 When the program needs user input it will move the cursor to the input box and say waiting for user input...
 
-When running tests tests will run automatically and notify the user of the results in the console
+When running tests tests will run automatically and notify the user of the results in the console.
+
+To change the color of each module background (the primary color)
+click and then select the color you want to change it to
+You can also change the header color (the secondary color) the same
+way.
 
 # Building
 

@@ -14,8 +14,8 @@ export const Console = () => {
   };
 
   return (
-    <div className="console-container card bg-dark text-white pb-2 h-100">
-      <div className="bg-dark d-flex gap-3 w-100 flex-row card-header justify-content-between">
+    <div className="console-container card text-white pb-2 h-100 sback">
+      <div className="d-flex gap-3 w-100 flex-row card-header justify-content-between">
         <div className="d-flex gap-3">
           <button className="btn btn-success" onClick={() => vm.run()}>
             Play
@@ -33,7 +33,7 @@ export const Console = () => {
           </button>
         </div>
       </div>
-      <div className="console-output-container card-body bg-black dark-scrollbar">
+      <div className="console-output-container card-body dark-scrollbar pback">
         {vm?.c?.outputs?.map((log, index) => (
           <div
             key={index}

@@ -5,7 +5,7 @@ import { MemoryItem } from "./Memory/MemoryItem";
 export const Memory = () => {
   const { vm } = useContext(GlobalContext);
   return (
-    <div className="card bg-dark h-50 mh-50">
+    <div className="card h-50 mh-50 sback">
       <div className="card-header text-white d-flex justify-content-between align-items-center">
         <h5 className="card-title m-0">Memory</h5>
         <div className="d-flex flex-row">
@@ -20,7 +20,7 @@ export const Memory = () => {
           </button>
         </div>
       </div>
-      <div className="overflow-scroll dark-scrollbar">
+      <div className="overflow-scroll pback">
         <div className="d-flex flex-column">
           <MemoryItem
             loc={"pc"}
