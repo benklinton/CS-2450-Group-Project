@@ -1,6 +1,7 @@
 import { Console } from "../Components/Console";
 import { Files } from "../Components/Files";
 import { Memory } from "../Components/Memory";
+import { ColorSelector } from "../Components/Colors";
 
 export const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ export const HomePage = () => {
         <div className="col-lg-4 d-flex flex-column gap-3 max-height">
           <Memory />
           <Files />
+          <ColorSelector />
         </div>
       </div>
     </div>

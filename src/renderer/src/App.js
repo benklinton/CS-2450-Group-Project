@@ -5,13 +5,16 @@ import { GlobalContextProvider } from "./Context/GlobalContext";
 import { HomePage } from "./Pages/Home";
 import { MessagingContextProvider } from "./Context/MessagingContext";
 import { TestingContextProvider } from "./Context/TestingContext";
+import { ColorContextProvider } from "./Context/ColorContext";
 
 function App() {
   return (
     <GlobalContextProvider>
       <MessagingContextProvider>
         <TestingContextProvider>
-          <HomePage />
+          <ColorContextProvider>
+            <HomePage />
+          </ColorContextProvider>
         </TestingContextProvider>
       </MessagingContextProvider>
     </GlobalContextProvider>

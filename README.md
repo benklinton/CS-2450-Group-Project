@@ -8,32 +8,13 @@ The project creates a virtual machine that reads instruction files specified to 
 2. Use nvm to install node version v20.14.0. (You could run with a different version but it is not recommended)
 3. Clone repository onto computer.
 4. Move into repository and install dependencies.
+npm run init
 
-```
-npm install
-```
-
-5. Install react deependencies
-
-```
-cd src/renderer
-npm install
-```
-
-6. exit src/renderer
-
-```
-cd ../..
-```
-
-7. Start the electron project by running
-
-```
-npm run build-react
+5. Run the application
 npm run start
 ```
 
-8. Start the development react server by running
+6. Start the development react server by running
 
 ```
 npm run dev
@@ -48,7 +29,12 @@ you can step forward one step at a time or just run
 
 When the program needs user input it will move the cursor to the input box and say waiting for user input...
 
-When running tests tests will run automatically and notify the user of the results in the console
+When running tests tests will run automatically and notify the user of the results in the console.
+
+To change the color of each module background (the primary color)
+click and then select the color you want to change it to
+You can also change the header color (the secondary color) the same
+way.
 
 # Building
 
