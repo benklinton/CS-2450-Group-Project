@@ -20,13 +20,13 @@
 }
 
 .console-output-container {
-  height: calc(500px - 30px);
+  height: calc(750px - 30px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 4px;
   overflow-y: auto;
-  max-height: 470px;
+  /*max-height: 470px;*/
 }
 
 .console-input-container {
@@ -43,7 +43,6 @@
 }
 
 .file-container {
-  background-color: grey;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -52,4 +51,8 @@
 
 .memory-container {
   max-height: 500px;
+}
+
+.color-container {
+  margin-bottom: 32px;
 }
