@@ -51,7 +51,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pkg": "^5.8.1",
+    "@vercel/ncc": "^0.34.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "readline-sync": "^1.4.10"
