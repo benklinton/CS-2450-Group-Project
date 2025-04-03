@@ -15,7 +15,7 @@
     ]
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
     "build": "npm run build-react && electron-builder",
     "start": "electron .",
     "build-react": "cd src/renderer && npm run build",
@@ -52,13 +52,20 @@
   "license": "ISC",
   "dependencies": {
     "@vercel/ncc": "^0.34.0",
+<<<<<<< HEAD
+=======
+    "@vitejs/plugin-react": "4.3.4",
+>>>>>>> 2eebeda (Addressed renderer vulnerabilities)
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "vite": "6.2.5",
+    "vitest": "3.1.1"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
     "electron": "^34.2.0",
-    "electron-builder": "^25.1.8"
+    "electron-builder": "^25.1.8",
+    "jsdom": "^26.0.0"
   }
 }
