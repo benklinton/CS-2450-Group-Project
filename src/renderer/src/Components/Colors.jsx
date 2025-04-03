@@ -3,11 +3,11 @@ import { ColorContext } from "../Context/ColorContext";
 
 export const ColorSelector = () => {
   const { handlePrimaryColorChange, handleSecondaryColorChange } = useContext(ColorContext);
-  const [ primaryColor, updatePColor ] = useState("#191c1f");
-  const [ secondaryColor, updateSColor ] = useState("#5a6269");
+  const [ primaryColor, updatePColor ] = useState("#4C721D");
+  const [ secondaryColor, updateSColor ] = useState("#d2e1b6");
 
   return (
-    <div className="text-white mb-5 h-100 color-container">
+    <div className="card text-white mb-5 h-100 color-container">
       <div className="sback h-50 mh-50 w-100 card-header justify-content-between p-2 align-items-center">
         <h5 className="m-0">Color Selector</h5>
       </div>

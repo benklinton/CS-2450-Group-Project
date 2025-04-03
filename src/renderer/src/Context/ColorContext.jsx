@@ -23,8 +23,8 @@ export const ColorContextProvider = ({ children }) => {
     >
       <style>{`
         :root {
-          --primary-color: #191c1f;
-          --secondary-color: #5a6269;
+          --primary-color: #4C721D;
+          --secondary-color: #d2e1b6;
         }
         .pback {
           background-color: var(--primary-color) !important;
