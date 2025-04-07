@@ -1,7 +1,7 @@
 import { createContext, useMemo, useState, useEffect } from "react";
 import { VirtualMachine } from "../UVSim/classes/virtualMachine";
-import { useVirtualMachine } from "../Hooks/useVirtualMachine";
 import { useVM } from "../Hooks/useVM";
+import React from "react";
 
 export const GlobalContext = createContext({
   vm: new VirtualMachine(),
@@ -10,20 +10,32 @@ export const GlobalContext = createContext({
 export const GlobalContextProvider = ({ children }) => {
   // const [vm, setVM] = useState(new VirtualMachine());
   // const { vm: vmRef, inputRef, rerenderCount } = useVirtualMachine();
-  const { vm: vmRef, rerenderCount, inputRef } = useVM();
-  const [vm, setVM] = useState(vmRef.current);
+  const {
+    vms: vmRefs,
+    rerenderCount,
+    inputRef,
+    selected,
+    selectVM,
+    removeVM,
+  } = useVM();
+  const [vm, setVM] = useState(vmRefs.current?.[0].vm);
 
   useEffect(() => {
-    setVM(vmRef.current);
-  }, [vmRef, rerenderCount]);
+    setVM(vmRefs.current?.[selected].vm);
+  }, [vmRefs, rerenderCount, selected]);
 
   const value = useMemo(
     () => ({
       vm: vm,
       inputRef: inputRef,
       rerenderCount: rerenderCount,
+      selected: selected,
+      selectVM: selectVM,
+      amountOfVMs: vmRefs.current.length,
+      vms: vmRefs.current,
+      removeVM: removeVM,
     }),
-    [rerenderCount]
+    [rerenderCount, selected, vm]
   );
 
   return (

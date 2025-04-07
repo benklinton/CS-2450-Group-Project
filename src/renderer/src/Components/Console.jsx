@@ -1,5 +1,6 @@
 import { GlobalContext } from "../Context/GlobalContext";
 import { useContext, useState } from "react";
+import React from "react";
 
 export const Console = () => {
   const [input, setInput] = useState("");

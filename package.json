@@ -52,10 +52,7 @@
   "license": "ISC",
   "dependencies": {
     "@vercel/ncc": "^0.34.0",
-<<<<<<< HEAD
-=======
     "@vitejs/plugin-react": "4.3.4",
->>>>>>> 2eebeda (Addressed renderer vulnerabilities)
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "readline-sync": "^1.4.10",

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React from "react";
 
 export const MemoryItem = ({ loc, value, selected, onChange }) => {
   const [isFocused, setIsFocused] = useState(false);

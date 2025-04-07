@@ -1,6 +1,7 @@
 import { GlobalContext } from "../Context/GlobalContext";
 import { useContext } from "react";
 import { MemoryItem } from "./Memory/MemoryItem";
+import React from "react";
 
 export const Memory = () => {
   const { vm } = useContext(GlobalContext);
