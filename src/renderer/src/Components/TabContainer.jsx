@@ -12,7 +12,7 @@ const TabContainer = ({ children }) => {
     selectVM(amountOfVMs);
   };
 
-  const handleSelect = (index) => {
+  const handleSelect = (e, index) => {
     e.stopPropagation();
     e.preventDefault();
     selectVM(index);
