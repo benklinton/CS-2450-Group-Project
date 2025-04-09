@@ -9,7 +9,7 @@ export const Files = () => {
     elem.style.backgroundColor = "#191c1f"; // Primary color
   });
   const { vm } = useContext(GlobalContext);
-  const { files, getFiles, revealFolder, retrieveFile } =
+  const { files, getFiles, selectFolder, retrieveFile } =
     useContext(MessagingContext);
   const { runTests } = useContext(TestingContext);
   const [selectedProgram, setSelectedProgram] = useState(-1);
@@ -32,7 +32,7 @@ export const Files = () => {
       <div className="d-flex w-100 card-header justify-content-between p-2 align-items-center">
         <h5 className="txt-normal card-title m-0 text-white">Files</h5>
         <div className="d-flex gap-3">
-          <button className="btn btn-secondary" onClick={() => revealFolder()}>
+          <button className="btn btn-secondary" onClick={() => selectFolder()}>
             open folder
           </button>
           <button onClick={() => getFiles()} className="btn btn-secondary">
