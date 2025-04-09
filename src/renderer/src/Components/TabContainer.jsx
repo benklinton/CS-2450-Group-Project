@@ -6,15 +6,21 @@ const TabContainer = ({ children }) => {
   const { amountOfVMs, selectVM, vms, selected, removeVM } =
     useContext(GlobalContext);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
     selectVM(amountOfVMs);
   };
 
   const handleSelect = (index) => {
+    e.stopPropagation();
+    e.preventDefault();
     selectVM(index);
   };
 
-  const handleClose = (index) => {
+  const handleClose = (e, index) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (amountOfVMs > 1) {
       //   selectVM(index);
       removeVM(index);
@@ -24,10 +30,10 @@ const TabContainer = ({ children }) => {
     <div className="w-100 d-flex overflow-x-auto">
       {vms.map((vm, index) => (
         <VMTab
-          onClick={() => handleSelect(index)}
+          onClick={(e) => handleSelect(e, index)}
           key={vm.name}
           name={vm.name}
-          onClose={amountOfVMs > 1 ? () => handleClose(index) : undefined}
+          onClose={amountOfVMs > 1 ? (e) => handleClose(e, index) : undefined}
           selected={index === selected}
         />
       ))}
