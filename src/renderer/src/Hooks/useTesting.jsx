@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 export const useTesting = () => {
   const { vm } = useContext(GlobalContext);
-  const { loadFile } = useContext(MessagingContext);
+  const { retrieveFile } = useContext(MessagingContext);
   let passed = 0;
   const runTests = async (fileContents) => {
     const formatted = formatTestFile(fileContents);
@@ -20,7 +20,7 @@ export const useTesting = () => {
       const hasAlpha = /[A-Za-z]/.test(program);
       if (program.includes(".") || hasAlpha) {
         try {
-          program = await loadFile(program);
+          program = await retrieveFile(program);
         } catch (err) {
           vm.c.log(err.message, "error");
           console.error(err);

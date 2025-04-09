@@ -9,14 +9,14 @@ export const Files = () => {
     elem.style.backgroundColor = "#191c1f"; // Primary color
   });
   const { vm } = useContext(GlobalContext);
-  const { files, getFiles, revealFolder, loadFile } =
+  const { files, getFiles, revealFolder, retrieveFile } =
     useContext(MessagingContext);
   const { runTests } = useContext(TestingContext);
   const [selectedProgram, setSelectedProgram] = useState(-1);
 
   const handleLoad = async (file) => {
     setSelectedProgram(file);
-    const contents = await loadFile(file);
+    const contents = await retrieveFile(file);
     vm.r.isTesting = false;
     console.log("loaded", contents);
     const hasAlpha = /[A-Za-z]/.test(contents);
