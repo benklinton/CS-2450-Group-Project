@@ -16,7 +16,7 @@
   },
   "scripts": {
     "test": "vitest run",
-    "build": "npm run build-react && electron-builder",
+    "build": "npm run init && electron-builder && open ./dist",
     "start": "electron .",
     "build-react": "cd src/renderer && npm run build",
     "dev": "npm run react",

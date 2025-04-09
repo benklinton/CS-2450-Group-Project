@@ -14,8 +14,7 @@ The project creates a virtual machine that reads instruction files specified to 
    npm run start
 
 ```
-
-6. Start the development react server by running
+OR Start the development react server by running
 
 ```
 
@@ -41,14 +40,8 @@ way.
 
 # Building
 
-To convert the project into an application run the following after installing all dependencies
+To convert the project into an application run the following
 
-to install all dependencies run
-```
-
-npm run init
-
-```
 
 ```
 
