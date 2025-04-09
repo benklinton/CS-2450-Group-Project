@@ -19,6 +19,8 @@ const startElectron = () => {
         preload: path.join(__dirname, "preload.js"),
       },
     });
+    win.maximize();
+    win.show();
     if (process.env.NODE_ENV === "development") {
       win.loadURL("http://localhost:3000");
       console.log("Development Mode");
@@ -61,7 +63,7 @@ const startElectron = () => {
 
   ipcMain.handle("select-folder", async (event, args) => {
     const result = await dialog.showOpenDialog({
-      properties: ["openDirectory"] // Allow only directory (folder) selection
+      properties: ["openDirectory"], // Allow only directory (folder) selection
     });
 
     if (result.canceled) {
