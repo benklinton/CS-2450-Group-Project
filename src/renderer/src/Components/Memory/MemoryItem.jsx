@@ -12,7 +12,7 @@ export const MemoryItem = ({ loc, value, selected, onChange }) => {
       if (/^-?\d*$/.test(e.target.value)) {
         const numValue = parseInt(e.target.value);
         // Check if the number is within valid range (-9999 to 9999)
-        if (!isNaN(numValue) && numValue >= -99249 && numValue <= 99249) {
+        if (!isNaN(numValue) && numValue >= -999249 && numValue <= 999249) {
           onChange(loc, e.target.value);
         }
         // If it's just a negative sign (not yet a complete number), still allow it

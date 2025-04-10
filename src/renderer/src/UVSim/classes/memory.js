@@ -58,7 +58,7 @@ export class Memory {
     if (loc < 0 || loc > 249) {
       throw new Error("Out of Bounds Location: " + loc);
     }
-    if (value > 99249 || value < -99249) {
+    if (value > 999249 || value < -999249) {
       throw new Error("Out of Bounds Value: " + value);
     }
     this.words[loc] = value;
