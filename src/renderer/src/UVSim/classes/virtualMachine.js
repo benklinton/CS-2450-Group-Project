@@ -42,13 +42,13 @@ export class VirtualMachine {
     try {
       this.r.ir = this.memory.getLoc(this.r.pc);
       this.r.pc++;
-
       this.execute();
     } catch (e) {
       console.log(e);
       this.c.log(e.message, "error");
       this.r.isEnd = true;
     }
+    this.r.acc %= 100000;
     this.rerender();
   }
 
