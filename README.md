@@ -81,9 +81,9 @@ vm.r.pc
 vm.r.pc = 0;
 
 //get a location in memory
-const temp = vm.memory.getLoc(23)
+const temp = vm.memory.getLoc(213)
 //set a location in memory
-vm.memory.setLoc(23,1020)
+vm.memory.setLoc(213,1020)
 
 ```
 
@@ -136,8 +136,8 @@ Program Option 2 - 1+ line - A list of lines of code to run. These are seperated
 ```
 
 Example:
-+1000
-+4300
++10010
++43010
 
 ```
 
