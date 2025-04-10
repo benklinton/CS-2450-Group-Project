@@ -71,12 +71,12 @@ export class VirtualMachine {
 
   getOpcode() {
     const opcode =
-      this.r.ir < 0 ? Math.ceil(this.r.ir / 100) : Math.floor(this.r.ir / 100);
+      this.r.ir < 0 ? Math.ceil(this.r.ir / 1000) : Math.floor(this.r.ir / 1000);
     return opcode;
   }
 
   getOperand() {
-    return this.r.ir % 100;
+    return this.r.ir % 1000;
   }
 
   execute() {

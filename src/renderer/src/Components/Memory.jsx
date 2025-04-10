@@ -27,8 +27,8 @@ export const Memory = () => {
             loc={"pc"}
             value={vm.r.pc}
             onChange={(loc, value) => {
-              if (Number(value) > 99) {
-                value = 99;
+              if (Number(value) > 249) {
+                value = 249;
               }
               vm.r.pc = value;
               vm.rerender();
