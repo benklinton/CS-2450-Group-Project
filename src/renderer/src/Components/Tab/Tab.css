@@ -1,0 +1,27 @@
+.tab {
+  border-radius: 0.25rem 0.25rem 0 0;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: none;
+  background-color: var(--secondary-color);
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.tab.selected {
+  color: black;
+  background-color: rgb(var(--bs-light-rgb));
+}
+
+/* .tab:hover:not(.selected) {
+  background-color: rgba(var(--bs-light-rgb), 0.85);
+} */
+
+.btn-close {
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
+.btn-close:hover {
+  opacity: 1;
+}

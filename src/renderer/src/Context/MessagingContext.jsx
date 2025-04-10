@@ -1,6 +1,7 @@
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
 import { GlobalContext } from "./GlobalContext";
 import { programSamples } from "../UVSim/programs/samples";
+import React from "react";
 
 export const MessagingContext = createContext({
   files: [],
@@ -8,7 +9,7 @@ export const MessagingContext = createContext({
 
 export const MessagingContextProvider = ({ children }) => {
   const [files, setFiles] = useState([]);
-  const [chosenDirectory, setChosenDirectory] = useState(null)
+  const [chosenDirectory, setChosenDirectory] = useState(null);
   const { vm } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -70,7 +71,9 @@ export const MessagingContextProvider = ({ children }) => {
   };
 
   const selectFolder = async () => {
-    const folderPath = await window.electron.ipcRenderer.invoke("select-folder");
+    const folderPath = await window.electron.ipcRenderer.invoke(
+      "select-folder"
+    );
     if (folderPath) {
       setChosenDirectory(folderPath);
       getFiles(folderPath);

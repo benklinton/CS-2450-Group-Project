@@ -2,9 +2,10 @@ import { GlobalContext } from "../Context/GlobalContext";
 import { useContext, useState } from "react";
 import { MessagingContext } from "../Context/MessagingContext";
 import { TestingContext } from "../Context/TestingContext";
+import React from "react";
 
 export const Files = () => {
-  Array.from(document.getElementsByClassName('pback')).forEach((elem) => {
+  Array.from(document.getElementsByClassName("pback")).forEach((elem) => {
     elem.style.backgroundColor = "#191c1f"; // Primary color
   });
   const { vm } = useContext(GlobalContext);

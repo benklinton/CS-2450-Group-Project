@@ -1,6 +1,7 @@
 import { createContext, useMemo, useContext } from "react";
 import { useTesting } from "../Hooks/useTesting";
 import { GlobalContext } from "./GlobalContext";
+import React from "react";
 
 export const TestingContext = createContext({});
 

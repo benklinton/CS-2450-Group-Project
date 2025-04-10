@@ -16,13 +16,14 @@
   },
   "scripts": {
     "test": "vitest run",
-    "build": "npm run build-react && electron-builder",
+    "build": "npm run init && electron-builder && open ./dist",
     "start": "electron .",
     "build-react": "cd src/renderer && npm run build",
     "dev": "npm run react",
     "react": "cd src/renderer && npm start",
     "init": "npm install && cd src/renderer && npm install && npm run build",
-    "reload": "npm run init && npm run start"
+    "reload": "npm run init && npm run start",
+    "fix": "npm audit fix && cd src/renderer && npm audit fix"
   },
   "build": {
     "appId": "com.example.myapp",
@@ -52,10 +53,7 @@
   "license": "ISC",
   "dependencies": {
     "@vercel/ncc": "^0.34.0",
-<<<<<<< HEAD
-=======
     "@vitejs/plugin-react": "4.3.4",
->>>>>>> 2eebeda (Addressed renderer vulnerabilities)
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "readline-sync": "^1.4.10",

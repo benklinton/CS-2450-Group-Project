@@ -1,7 +1,7 @@
 export class Memory {
-  words = Array.from({ length: 100 }, () => 0);
+  words = Array.from({ length: 250 }, () => 0);
   constructor(rerender) {
-    this.words = Array.from({ length: 100 }, () => 0);
+    this.words = Array.from({ length: 250 }, () => 0);
     this.rerender = rerender;
   }
 
@@ -41,7 +41,7 @@ export class Memory {
    * @returns {string}
    */
   getLoc(loc = 0) {
-    if (loc < 0 || loc > 99) {
+    if (loc < 0 || loc > 249) {
       throw new Error("Out Of Bounds: " + loc);
     }
     return this.words[loc];
@@ -55,10 +55,10 @@ export class Memory {
    * The value with which the line will be written
    */
   setLoc(loc = 0, value = 0) {
-    if (loc < 0 || loc > 99) {
+    if (loc < 0 || loc > 249) {
       throw new Error("Out of Bounds Location: " + loc);
     }
-    if (value > 9999 || value < -9999) {
+    if (value > 999249 || value < -999249) {
       throw new Error("Out of Bounds Value: " + value);
     }
     this.words[loc] = value;
@@ -72,7 +72,7 @@ export class Memory {
    * Clears the whole memory
    */
   clear() {
-    this.words = Array.from({ length: 100 }, () => 0);
+    this.words = Array.from({ length: 250 }, () => 0);
     this.rerender();
   }
 }

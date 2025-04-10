@@ -1,24 +1,30 @@
-import { createContext} from "react";
-
+import { createContext } from "react";
+import React from "react";
 // Create the context
 export const ColorContext = createContext();
 
 export const ColorContextProvider = ({ children }) => {
   // Handle primary color change
   const handlePrimaryColorChange = (e) => {
-    document.documentElement.style.setProperty("--primary-color",e.target.value);
+    document.documentElement.style.setProperty(
+      "--primary-color",
+      e.target.value
+    );
   };
 
   // Handle secondary color change
   const handleSecondaryColorChange = (e) => {
-    document.documentElement.style.setProperty("--secondary-color",e.target.value);
+    document.documentElement.style.setProperty(
+      "--secondary-color",
+      e.target.value
+    );
   };
 
   return (
     <ColorContext.Provider
       value={{
         handlePrimaryColorChange,
-        handleSecondaryColorChange
+        handleSecondaryColorChange,
       }}
     >
       <style>{`

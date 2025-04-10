@@ -42,13 +42,13 @@ export class VirtualMachine {
     try {
       this.r.ir = this.memory.getLoc(this.r.pc);
       this.r.pc++;
-
       this.execute();
     } catch (e) {
       console.log(e);
       this.c.log(e.message, "error");
       this.r.isEnd = true;
     }
+    this.r.acc %= 100000;
     this.rerender();
   }
 
@@ -71,12 +71,12 @@ export class VirtualMachine {
 
   getOpcode() {
     const opcode =
-      this.r.ir < 0 ? Math.ceil(this.r.ir / 100) : Math.floor(this.r.ir / 100);
+      this.r.ir < 0 ? Math.ceil(this.r.ir / 10000) : Math.floor(this.r.ir / 10000);
     return opcode;
   }
 
   getOperand() {
-    return this.r.ir % 100;
+    return this.r.ir % 10000;
   }
 
   execute() {
