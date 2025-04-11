@@ -34,7 +34,7 @@ function ensureDirectoryExists(directoryPath) {
 function getFilesFromProgramFolder(chosenDirectory = null) {
   const directoryPath = chosenDirectory || getDefaultProgramPath();
   ensureDirectoryExists(directoryPath);
-  console.log(`Using directory: ${directoryPath}, chosen: ${chosenDirectory}`);
+  //console.log(`Using directory: ${directoryPath}, chosen: ${chosenDirectory}`);
   try {
     const items = fs.readdirSync(directoryPath);
     const files = items.filter((item) => {
