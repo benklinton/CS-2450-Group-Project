@@ -70,13 +70,13 @@ export const useVirtualMachine = () => {
 
   const getOpcode = () => {
     const { r, memory, c } = vm.current;
-    const opcode = r.ir < 0 ? Math.ceil(r.ir / 100) : Math.floor(r.ir / 100);
+    const opcode = r.ir < 0 ? Math.ceil(r.ir / 1000) : Math.floor(r.ir / 1000);
     return opcode;
   };
 
   const getOperand = () => {
     const { r, memory, c } = vm.current;
-    return r.ir % 100;
+    return r.ir % 1000;
   };
 
   const execute = () => {
