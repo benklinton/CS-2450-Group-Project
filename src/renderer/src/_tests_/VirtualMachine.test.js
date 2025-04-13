@@ -38,6 +38,13 @@
         expect(consoleLogSpy).toHaveBeenCalledWith("Out Of Bounds: 250", "error");
         expect(vm.r.isEnd).toBe(true);
     });
+
+    it('should contain 250 memory locations', () => {
+        const rerender = vi.fn();
+        const vm = new VirtualMachine(rerender, null);
+        expect(vm.memory.words).toHaveLength(250); // Check if memory has 250 locations
+    }
+    );
 });
 
 

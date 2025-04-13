@@ -14,7 +14,7 @@ describe("READ function", () => {
         expect(vm.r.isWaitingForInput).toBe(true); 
         expect(vm.r.r1).toBe(5); 
         const input = "42";
-        const validation = 42; //this is cursed! But its the only way to test it because I dont know at which point the string is converted into a number...
+        const validation = 42;
         vm.sendInput(input); 
         expect(vm.memory.getLoc(vm.r.r1)).toBe(validation); 
        
