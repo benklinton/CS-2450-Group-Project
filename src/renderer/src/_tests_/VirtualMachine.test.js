@@ -43,8 +43,7 @@
         const rerender = vi.fn();
         const vm = new VirtualMachine(rerender, null);
         expect(vm.memory.words).toHaveLength(250); // Check if memory has 250 locations
-    }
-    );
+    });
 });
 
 
