@@ -15,7 +15,12 @@ const os = require("os");
  */
 function getDefaultProgramPath() {
   // For now, using Documents folder for both platforms.
-  return path.join(__dirname, "..", "..", "programs");
+  return path.join(os.homedir(), "Documents", "cs2450vm", "programs");
+}
+
+function getHomeDirectory() {
+  const homeDir = os.homedir();
+  return homeDir;
 }
 
 /**
@@ -24,6 +29,34 @@ function getDefaultProgramPath() {
 function ensureDirectoryExists(directoryPath) {
   if (!fs.existsSync(directoryPath)) {
     fs.mkdirSync(directoryPath, { recursive: true });
+
+    // Option 2: Create sample files with hardcoded content
+    const sampleFiles = {
+      "test1.txt": `+1007
++4300`,
+      "test2.txt": `+1009
++1010
++2009
++3110
++4107
++1109
++4300
++1110
++4300
++0000
++0000
+-99999`,
+    };
+
+    for (const [fileName, content] of Object.entries(sampleFiles)) {
+      try {
+        fs.writeFileSync(path.join(directoryPath, fileName), content);
+        console.log(`Created sample file: ${fileName}`);
+      } catch (error) {
+        console.error(`Error creating ${fileName}:`, error);
+      }
+    }
+    // Copy sample files from the project's programs directory
   }
 }
 

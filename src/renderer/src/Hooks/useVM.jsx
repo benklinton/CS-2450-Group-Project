@@ -19,8 +19,10 @@ export const useVM = () => {
     if (vms.current.length > 1) {
       vms.current.splice(index, 1);
       rerender();
-      if (selected >= index) {
+      if (selected >= index && index !== 0) {
         setSelected((value) => value - 1);
+      } else {
+        setSelected(0);
       }
     }
   });
