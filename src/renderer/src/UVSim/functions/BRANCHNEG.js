@@ -14,4 +14,7 @@ export const BRANCHNEG = (vm, v) => {
   if (vm.r.acc < 0) {
     vm.r.pc = v;
   }
+  else {
+    vm.r.pc++;
+  }
 };

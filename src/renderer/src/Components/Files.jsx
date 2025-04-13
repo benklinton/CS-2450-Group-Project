@@ -1,7 +1,7 @@
 import { GlobalContext } from "../Context/GlobalContext";
 import { useContext, useState } from "react";
 import { MessagingContext } from "../Context/MessagingContext";
-import { TestingContext } from "../Context/TestingContext";
+// import { TestingContext } from "../Context/TestingContext";
 import React from "react";
 
 export const Files = () => {
@@ -11,7 +11,7 @@ export const Files = () => {
   const { vm } = useContext(GlobalContext);
   const { files, getFiles, selectFolder, retrieveFile } =
     useContext(MessagingContext);
-  const { runTests } = useContext(TestingContext);
+  // const { runTests } = useContext(TestingContext);
   const [selectedProgram, setSelectedProgram] = useState(-1);
 
   const handleLoad = async (file) => {
@@ -23,7 +23,7 @@ export const Files = () => {
     if (!hasAlpha) {
       vm.loadProgram(contents);
     } else {
-      runTests(contents);
+      // runTests(contents);
     }
   };
 

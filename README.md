@@ -93,78 +93,12 @@ vm.memory.setLoc(213,1020)
 
 # Testing
 
-Tests are done by running the application
+Tests are done by running
 ```
 
-npm run start
+npm test
 
 ```
-
-within the "programs" directory.
-
-Tests are created in UVSimTests.txt (found automatically in the files section). They are seperated by two newline characters.
-A test passes if it matches the output of the program after being fed the test.
-Each test is based on the following format:
-Title - 1 line - Name of the test
+The testing framework will run automatically
 
 ```
-
-Example:
-My Test 1
-
-```
-
-Arguments - 1 line - A list of arguments for the READ operator.
-Each is seperated by a space. If you dont want one, put -1.
-
-```
-
-Example:
-15 7 2
-
-```
-
-There are two ways to write the "Program" part of a test.
-Program Option 1 - 1 line - Path to file with program. CD is the programs folder.
-
-```
-
-Example:
-Test1.txt
-
-```
-
-Program Option 2 - 1+ line - A list of lines of code to run. These are seperated by new line characters.
-
-```
-
-Example:
-+100010
-+430000
-
-```
-
-Memory Location - 1 line - A location in memory to load from. This will be added to the programs output
-If you dont want to load from memory, put -1.
-
-```
-
-Example:
-45
-
-```
-
-Expected Result - 1 line - The expected result of the program. Each console log/error is seperated by comma.
-Generally they follow this format:
-OPCODE OPERAND,FUNCTIONNAME,OPCODE2 OPERAND2,FUNCTIONNAME2...Memory Read
-However errors may be included as an output.
-
-```
-
-Example:
-10 7,READ,43 0,HALT,15
-
-```
-
-If an operator would write to the screen, such as WRITE, the value it is
-writing will come directly after its name in the output.
