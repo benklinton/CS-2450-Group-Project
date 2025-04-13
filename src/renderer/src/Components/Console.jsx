@@ -9,7 +9,7 @@ export const Console = () => {
   const handleInput = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    vm.c.log(input);
+    if (!isNaN(parseFloat(input))) vm.c.log(input);
     vm.sendInput(input);
     setInput("");
   };
