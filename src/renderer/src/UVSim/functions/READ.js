@@ -10,6 +10,7 @@ export const READ = (vm, v, inputRef) => {
     console.log("READ");
     vm.c.log("READ");
   }
+  vm.c.log("waiting for input");
 
   // const input = parseFloat(vm.reader.question("").trim());
   //This puts the input in memory if 1. the input is a number
