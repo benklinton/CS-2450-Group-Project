@@ -45,7 +45,7 @@ export const MessagingContextProvider = ({ children }) => {
     }
   };
 
-  const loadFile = async (fileName) => {
+  const retrieveFile = async (fileName) => {
     if (window?.electron?.ipcRenderer) {
       const response = await window?.electron?.ipcRenderer?.invoke(
         "load-file",
@@ -88,11 +88,11 @@ export const MessagingContextProvider = ({ children }) => {
     () => ({
       files: files,
       getFiles,
-      loadFile,
+      retrieveFile,
       selectFolder,
       chosenDirectory,
     }),
-    [files, getFiles, loadFile, selectFolder, chosenDirectory]
+    [files, getFiles, retrieveFile, selectFolder, chosenDirectory]
   );
 
   return (

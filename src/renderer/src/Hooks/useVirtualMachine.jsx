@@ -61,22 +61,26 @@ export const useVirtualMachine = () => {
     const { r, memory, c } = vm.current;
     if (!r.isWaitingForInput) return;
     const i = parseFloat(input.trim());
-    memory.setLoc(r.r1, i);
-    r.isWaitingForInput = false;
-    if (r.isRunning) {
-      run();
+    if (!isNaN(i)) {
+      memory.setLoc(r.r1, i);
+      r.isWaitingForInput = false;
+      if (r.isRunning) {
+        run();
+      }
+    } else {
+      throw new Error("Input must be number");
     }
   };
 
   const getOpcode = () => {
     const { r, memory, c } = vm.current;
-    const opcode = r.ir < 0 ? Math.ceil(r.ir / 100) : Math.floor(r.ir / 100);
+    const opcode = r.ir < 0 ? Math.ceil(r.ir / 1000) : Math.floor(r.ir / 1000);
     return opcode;
   };
 
   const getOperand = () => {
     const { r, memory, c } = vm.current;
-    return r.ir % 100;
+    return r.ir % 1000;
   };
 
   const execute = () => {

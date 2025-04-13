@@ -9,16 +9,19 @@ The project creates a virtual machine that reads instruction files specified to 
 3. Clone repository onto computer.
 4. Move into repository and install dependencies.
 ```
-   npm run init
-```
 
-6. Run the application
-```
-   npm run start
+npm run init
 
 ```
+
+5. Run the application
+```
+
+npm run start
+
+```
+
 OR Start the development react server by running
-
 ```
 
 npm run dev
@@ -27,32 +30,31 @@ npm run dev
 
 # Usage
 
-Once the program is running, sample files are automatically loaded into the files section
+Once the program is running, sample files are automatically loaded into the files section.
 
-Click on one of the programs in the files section, once it is opened it will load it into memory
-you can step forward one step at a time or just run
+Click on one of the programs in the files section, it will load it into memory.
+You can run the entire program or go through it in steps.
 
-When the program needs user input it will move the cursor to the input box and say waiting for user input...
+When the program needs user input it will move focus to the input box and say "Waiting for input..."
 
-When running tests tests will run automatically and notify the user of the results in the console.
+When running tests, tests will execute automatically and notify the user of the results in the console.
 
-To change the color of each module background (the primary color)
-click and then select the color you want to change it to
-You can also change the header color (the secondary color) the same
-way.
+To change the color of each module background (the primary color), click and then select the color you want to change it to.
+
+You can also change the header color (the secondary color) the same way.
 
 # Building
 
-To convert the project into an application run the following
-
-
+To convert the project into an application run the following:
 ```
 
 npm run build
 
 ```
 
-The output will appear in a new folder called dist it should output a program for Mac:
+The output will appear in a new folder called dist.
+
+Mac:
 
 **app-macos**
 
@@ -66,11 +68,10 @@ Windows:
 
 # Functions
 
-Each function is passed an reference to the virtual machine object that is executing the program.
-It is the first parameter of every function call
+Each function is passed a reference to the virtual machine object that is executing the program.
+It is the first parameter of every function call.
 
-You can access values of the virtual machine such as the register or memory by specifying
-
+You can access values of the virtual machine such as the register or memory by specifying:
 ```
 
 //gets the accumulator register value
@@ -93,7 +94,6 @@ vm.memory.setLoc(213,1020)
 # Testing
 
 Tests are done by running the application
-
 ```
 
 npm run start
@@ -139,8 +139,8 @@ Program Option 2 - 1+ line - A list of lines of code to run. These are seperated
 ```
 
 Example:
-+10010
-+43010
++100010
++430000
 
 ```
 
@@ -168,4 +168,3 @@ Example:
 
 If an operator would write to the screen, such as WRITE, the value it is
 writing will come directly after its name in the output.
-```
