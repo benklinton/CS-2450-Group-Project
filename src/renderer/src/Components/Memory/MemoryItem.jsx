@@ -3,6 +3,10 @@ import React from "react";
 
 export const MemoryItem = ({ loc, value, selected, onChange }) => {
   const [isFocused, setIsFocused] = useState(false);
+  value = value.toString();
+  if (value.length == 5) {
+    value = "0" + value;
+  }
 
   const handleChange = (e) => {
     if (e.target.value === "") {

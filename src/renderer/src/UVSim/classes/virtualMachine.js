@@ -57,11 +57,15 @@ export class VirtualMachine {
 
     try {
       const i = parseFloat(input.trim());
-      this.memory.setLoc(this.r.r1, i);
-      this.r.isWaitingForInput = false;
-      this.inputRef.current.placeholder = "Console Input";
-      if (this.r.isRunning) {
-        this.run();
+      if (!isNaN(i)) {
+        this.memory.setLoc(this.r.r1, i);
+        this.r.isWaitingForInput = false;
+        this.inputRef.current.placeholder = "Console Input";
+        if (this.r.isRunning) {
+          this.run();
+        }
+      } else {
+        throw new Error("Input must be number");
       }
     } catch (e) {
       this.r.isEnd = true;
@@ -71,12 +75,12 @@ export class VirtualMachine {
 
   getOpcode() {
     const opcode =
-      this.r.ir < 0 ? Math.ceil(this.r.ir / 10000) : Math.floor(this.r.ir / 10000);
+      this.r.ir < 0 ? Math.ceil(this.r.ir / 1000) : Math.floor(this.r.ir / 1000);
     return opcode;
   }
 
   getOperand() {
-    return this.r.ir % 10000;
+    return this.r.ir % 1000;
   }
 
   execute() {

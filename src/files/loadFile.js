@@ -23,12 +23,15 @@ function convertFourToSix(fileContents) {
   for (let i=0; i<fileContents.length; i++) {
     if (fileContents[i] === '+') indices.push(i);
   }
+  console.log(convertedFileContents);
 
-  // If word is four digits, add trailing 0 to opcode and leading 0 to operand
+  // If word is four digits, add trailing 0 to opcode and trailing 0 to operand
   // Loop through indices in reverse order to not mess up positions after adding digits
   for (let i=indices.length-1; i>=0; i--) {
     if (indices[i]+5 >= fileContents.length || fileContents[indices[i]+5] === '\n') {
-      convertedFileContents = convertedFileContents.slice(0, indices[i]+3) + "00" + convertedFileContents.slice(indices[i]+3);
+      convertedFileContents = convertedFileContents.slice(0, indices[i]) + "+0" + convertedFileContents.slice(indices[i]+1, indices[i]+3) + "0" + convertedFileContents.slice(indices[i]+3, indices[i]+5) + convertedFileContents.slice(indices[i]+5);
+      console.log(convertedFileContents);
+
     }
   }
 
